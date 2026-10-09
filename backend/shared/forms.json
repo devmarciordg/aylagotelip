@@ -1,0 +1,661 @@
+{
+  "_leia_me": "Fonte única dos questionários por serviço. Lido pelo build do site (renderiza os campos) e pela API (valida o envio). Não duplicar em outro lugar: schema em dois arquivos vira divergência silenciosa. Copiado das planilhas do Google Forms em uso em gotelipengenharia.com/services (09/09/2026). `group` e `half` descrevem a apresentação do próprio campo — agrupamento em fieldset e meia coluna; a API ignora as chaves que não valida.",
+  "edificacoes": {
+    "title": "Edificações em geral",
+    "intro": "Preencha o questionário e entraremos em contato em até 24 horas.",
+    "service": [
+      "projetos",
+      "consultoria"
+    ],
+    "origem": "https://forms.gle/eCyvDmjQ5srsMF2k9",
+    "map": {
+      "name_company": "cliente",
+      "email": "email",
+      "phone": "telefone",
+      "city": "cidade"
+    },
+    "fields": [
+      {
+        "id": "cliente",
+        "label": "Cliente",
+        "type": "text",
+        "required": true,
+        "group": "Quem está solicitando",
+        "half": true
+      },
+      {
+        "id": "cnpj_cpf",
+        "label": "CNPJ ou CPF do empreendimento",
+        "type": "text",
+        "required": true,
+        "group": "Quem está solicitando",
+        "half": true
+      },
+      {
+        "id": "telefone",
+        "label": "Telefone",
+        "type": "tel",
+        "required": true,
+        "group": "Quem está solicitando",
+        "half": true
+      },
+      {
+        "id": "email",
+        "label": "E-mail",
+        "type": "email",
+        "required": true,
+        "group": "Quem está solicitando",
+        "half": true
+      },
+      {
+        "id": "endereco",
+        "label": "Endereço",
+        "type": "text",
+        "required": true,
+        "group": "A edificação"
+      },
+      {
+        "id": "cidade",
+        "label": "Cidade / Estado da edificação",
+        "type": "text",
+        "required": true,
+        "group": "A edificação",
+        "half": true
+      },
+      {
+        "id": "atividade",
+        "label": "Atividade exercida",
+        "type": "text",
+        "required": true,
+        "group": "A edificação",
+        "half": true
+      },
+      {
+        "id": "responsavel_uso",
+        "label": "Responsável pelo uso",
+        "type": "text",
+        "required": false,
+        "group": "A edificação"
+      },
+      {
+        "id": "area_m2",
+        "label": "Área da edificação (m²)",
+        "type": "number",
+        "required": true,
+        "group": "A edificação",
+        "half": true
+      },
+      {
+        "id": "altura_m",
+        "label": "Altura da edificação (metros)",
+        "type": "number",
+        "required": true,
+        "group": "A edificação",
+        "half": true
+      },
+      {
+        "id": "tipo_estrutura",
+        "label": "Tipo de estrutura",
+        "type": "radio",
+        "required": true,
+        "other": true,
+        "options": [
+          "Metálica",
+          "Concreto armado",
+          "Steel frame",
+          "Mista",
+          "Painéis monolíticos - EPS"
+        ],
+        "group": "A edificação"
+      },
+      {
+        "id": "data_construcao",
+        "label": "Data de construção da edificação",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Edificação construída: elementos estruturais construídos entre 2 de julho de 2005 e 31 de dezembro de 2016.",
+          "Edificação existente: construção comprovadamente anterior a 2 de julho de 2005.",
+          "Edificação nova: a construir, ou construída a partir de 1º de janeiro de 2017."
+        ],
+        "group": "A edificação"
+      },
+      {
+        "id": "liquido_combustivel",
+        "label": "Há atividade que demande armazenamento de líquido combustível ou inflamável, ainda que fracionado, acima de 1.000 L?",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Sim",
+          "Não"
+        ],
+        "group": "Riscos e usos"
+      },
+      {
+        "id": "subsolo_outro_uso",
+        "label": "O imóvel possui subsolo com uso distinto de estacionamento?",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Sim",
+          "Não"
+        ],
+        "group": "Riscos e usos"
+      },
+      {
+        "id": "glp_acima_190kg",
+        "label": "A edificação armazena gás liquefeito de petróleo (GLP) acima de 190 kg?",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Sim",
+          "Não"
+        ],
+        "group": "Riscos e usos"
+      },
+      {
+        "id": "uso_autonomo",
+        "label": "A edificação é usada exclusivamente por empreendedor autônomo (pessoa física/CPF)?",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Sim",
+          "Não"
+        ],
+        "group": "Riscos e usos"
+      },
+      {
+        "id": "lotacao_acima_100",
+        "label": "É edificação ou espaço de uso coletivo com lotação superior a 100 pessoas?",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Sim",
+          "Não"
+        ],
+        "group": "Riscos e usos"
+      },
+      {
+        "id": "atividade_risco_iii",
+        "label": "Alguma destas atividades econômicas de risco III é exercida na edificação?",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Fabricação de madeira laminada e de chapas de madeira compensada, prensada e aglomerada",
+          "Fabricação de coque, de produtos derivados do petróleo e de biocombustíveis",
+          "Produção de gás; processamento de gás natural; distribuição de combustíveis gasosos por redes urbanas",
+          "Comércio atacadista de tintas, vernizes e similares",
+          "Comércio atacadista de combustíveis sólidos, líquidos e gasosos, exceto gás natural e GLP",
+          "Comércio atacadista de gás liquefeito de petróleo (GLP)",
+          "Comércio atacadista de produtos químicos e petroquímicos, exceto agroquímicos",
+          "Comércio atacadista de papel e papelão em bruto e de embalagens",
+          "Comércio atacadista de resíduos de papel e papelão",
+          "Comércio atacadista de resíduos e sucatas não-metálicos, exceto de papel e papelão",
+          "Comércio varejista de combustíveis para veículos automotores",
+          "Comércio varejista de gás liquefeito de petróleo (GLP)",
+          "Comércio varejista de fogos de artifício e artigos pirotécnicos",
+          "Educação infantil – creche",
+          "Educação infantil – pré-escola",
+          "Atividades de atendimento hospitalar",
+          "Nenhuma das opções acima"
+        ],
+        "group": "Riscos e usos"
+      }
+    ]
+  },
+  "inss": {
+    "title": "Redução do INSS de obra",
+    "intro": "Preencha o questionário para elaborarmos o orçamento.",
+    "service": "inss",
+    "origem": "https://forms.gle/ekfrSJ1bLKEqs13S7",
+    "map": {
+      "name_company": "dados_pessoa_fisica",
+      "email": "email",
+      "phone": "telefone",
+      "city": "municipio_estado"
+    },
+    "fields": [
+      {
+        "id": "dados_pessoa_fisica",
+        "label": "Nome completo (pessoa física)",
+        "type": "text",
+        "required": true,
+        "group": "Quem está solicitando"
+      },
+      {
+        "id": "telefone",
+        "label": "Telefone",
+        "type": "tel",
+        "required": true,
+        "group": "Quem está solicitando",
+        "half": true
+      },
+      {
+        "id": "email",
+        "label": "E-mail",
+        "type": "email",
+        "required": true,
+        "group": "Quem está solicitando",
+        "half": true
+      },
+      {
+        "id": "endereco",
+        "label": "Endereço da obra",
+        "type": "text",
+        "required": true,
+        "group": "A obra"
+      },
+      {
+        "id": "municipio_estado",
+        "label": "Município / Estado",
+        "type": "text",
+        "required": true,
+        "group": "A obra",
+        "half": true
+      },
+      {
+        "id": "periodo_obra",
+        "label": "Data de início e término da obra",
+        "type": "text",
+        "required": true,
+        "group": "A obra",
+        "half": true
+      },
+      {
+        "id": "area_total_m2",
+        "label": "Área total sem piscina (m²)",
+        "type": "number",
+        "required": true,
+        "group": "A obra",
+        "half": true
+      },
+      {
+        "id": "piscina_area_m2",
+        "label": "Área da piscina (m²), se houver",
+        "type": "text",
+        "required": false,
+        "group": "A obra",
+        "half": true
+      },
+      {
+        "id": "destinacao",
+        "label": "Destinação da obra",
+        "type": "radio",
+        "required": true,
+        "other": true,
+        "options": [
+          "Residência unifamiliar",
+          "Residencial multifamiliar",
+          "Comercial",
+          "Casa popular",
+          "Galpão industrial",
+          "Conjunto habitacional"
+        ],
+        "group": "A obra"
+      },
+      {
+        "id": "estrutura_principal",
+        "label": "Tipo da estrutura principal (pilares e vigas; laje não entra)",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Alvenaria",
+          "Madeira",
+          "Mista"
+        ],
+        "group": "A obra"
+      },
+      {
+        "id": "pre_moldado",
+        "label": "Se alvenaria, é pré-moldado ou pré-fabricado?",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Sim",
+          "Não",
+          "Não se aplica"
+        ],
+        "group": "A obra"
+      },
+      {
+        "id": "prestador",
+        "label": "O prestador de serviço é autônomo ou MEI?",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Autônomo",
+          "MEI",
+          "Não sei"
+        ],
+        "group": "A obra"
+      },
+      {
+        "id": "alvara",
+        "label": "Possui alvará de construção em nome de pessoa física?",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Sim",
+          "Não"
+        ],
+        "group": "Situação documental"
+      },
+      {
+        "id": "habite_se",
+        "label": "Já possui habite-se?",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Sim",
+          "Não"
+        ],
+        "group": "Situação documental"
+      },
+      {
+        "id": "projeto_aprovado",
+        "label": "Se não tem habite-se, possui projeto aprovado na prefeitura?",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Sim",
+          "Não",
+          "Não se aplica"
+        ],
+        "group": "Situação documental"
+      },
+      {
+        "id": "fotos",
+        "label": "Fotos da obra: descreva o que tem disponível (enviaremos o link para upload no retorno)",
+        "type": "textarea",
+        "required": false,
+        "group": "Comprovação"
+      },
+      {
+        "id": "obra_decadente",
+        "label": "Em caso de obra decadente, como comprovar início e término?",
+        "type": "textarea",
+        "required": false,
+        "group": "Comprovação"
+      }
+    ]
+  },
+  "eventos": {
+    "title": "Eventos temporários",
+    "intro": "Preencha o questionário e entraremos em contato em até 24 horas.",
+    "service": "eventos",
+    "origem": "https://forms.gle/8cFrvkP9Eq3kznEu8",
+    "map": {
+      "name_company": "cliente",
+      "email": "email",
+      "phone": "telefone",
+      "city": "cidade"
+    },
+    "fields": [
+      {
+        "id": "cliente",
+        "label": "Nome do cliente",
+        "type": "text",
+        "required": true,
+        "group": "Quem está solicitando",
+        "half": true
+      },
+      {
+        "id": "cnpj_cpf",
+        "label": "CNPJ ou CPF",
+        "type": "text",
+        "required": true,
+        "group": "Quem está solicitando",
+        "half": true
+      },
+      {
+        "id": "telefone",
+        "label": "Telefone",
+        "type": "tel",
+        "required": true,
+        "group": "Quem está solicitando",
+        "half": true
+      },
+      {
+        "id": "email",
+        "label": "E-mail",
+        "type": "email",
+        "required": true,
+        "group": "Quem está solicitando",
+        "half": true
+      },
+      {
+        "id": "endereco",
+        "label": "Endereço",
+        "type": "text",
+        "required": true,
+        "group": "Quem está solicitando"
+      },
+      {
+        "id": "tipo_evento",
+        "label": "Qual o tipo de evento? (feira, corrida, passeata, rodeio…)",
+        "type": "text",
+        "required": true,
+        "group": "O evento",
+        "half": true
+      },
+      {
+        "id": "publico_estimado",
+        "label": "Quantidade estimada de pessoas no evento",
+        "type": "number",
+        "required": true,
+        "group": "O evento",
+        "half": true
+      },
+      {
+        "id": "data_horario",
+        "label": "Em que data ocorrerá o evento e qual o horário de funcionamento?",
+        "type": "text",
+        "required": true,
+        "group": "O evento"
+      },
+      {
+        "id": "atracoes",
+        "label": "Haverá atrações? Se sim, quais?",
+        "type": "textarea",
+        "required": true,
+        "group": "O evento"
+      },
+      {
+        "id": "setores",
+        "label": "O evento será organizado por setores? Se sim, identifique e caracterize cada um (ex.: praça de alimentação, público sentado, 40 mesas)",
+        "type": "textarea",
+        "required": true,
+        "group": "O evento"
+      },
+      {
+        "id": "local_endereco",
+        "label": "Endereço do local do evento",
+        "type": "text",
+        "required": true,
+        "group": "O local"
+      },
+      {
+        "id": "cidade",
+        "label": "Cidade / Estado do evento",
+        "type": "text",
+        "required": true,
+        "group": "O local"
+      },
+      {
+        "id": "local_tipo",
+        "label": "O evento ocorrerá ao ar livre ou no interior de edificações?",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Ao ar livre",
+          "No interior de edificações",
+          "Nos dois"
+        ],
+        "group": "O local"
+      },
+      {
+        "id": "projeto_arquitetonico",
+        "label": "Possui projeto arquitetônico do local?",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Sim",
+          "Não"
+        ],
+        "group": "O local"
+      },
+      {
+        "id": "vizinhanca",
+        "label": "Quais as características da vizinhança onde ocorrerá o evento? (área rural, alta concentração de edificações…)",
+        "type": "textarea",
+        "required": true,
+        "group": "O local"
+      },
+      {
+        "id": "estruturas_provisorias",
+        "label": "Haverá estruturas provisórias (arquibancadas, palco, tendas…)? Quais e de que dimensão?",
+        "type": "textarea",
+        "required": true,
+        "group": "Estruturas e riscos"
+      },
+      {
+        "id": "barreiras",
+        "label": "O evento utilizará delimitação por barreiras?",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Sim",
+          "Não"
+        ],
+        "group": "Estruturas e riscos"
+      },
+      {
+        "id": "controle_entrada",
+        "label": "Haverá controle de entrada de público? Se sim, como será feito?",
+        "type": "textarea",
+        "required": true,
+        "group": "Estruturas e riscos"
+      },
+      {
+        "id": "pessoas_com_deficiencia",
+        "label": "Haverá presença de pessoas com deficiência?",
+        "type": "radio",
+        "required": true,
+        "options": [
+          "Sim",
+          "Não",
+          "Ainda não sei"
+        ],
+        "group": "Estruturas e riscos"
+      },
+      {
+        "id": "riscos_especificos",
+        "label": "Haverá algum risco específico? (queima de fogos, fogueiras, brinquedos mecânicos…)",
+        "type": "textarea",
+        "required": true,
+        "group": "Estruturas e riscos"
+      }
+    ]
+  },
+  "brigada": {
+    "title": "Treinamento de brigada de incêndio",
+    "intro": "Preencha o questionário e entraremos em contato em até 1 dia útil.",
+    "service": "brigada",
+    "origem": "https://forms.gle/DGYTvUC6EkaDy3cB7",
+    "map": {
+      "name_company": "nome",
+      "email": "email",
+      "phone": "telefone",
+      "city": "cidade"
+    },
+    "fields": [
+      {
+        "id": "nome",
+        "label": "Nome ou empresa",
+        "type": "text",
+        "required": true,
+        "group": "Quem está solicitando"
+      },
+      {
+        "id": "telefone",
+        "label": "Telefone",
+        "type": "tel",
+        "required": true,
+        "group": "Quem está solicitando",
+        "half": true
+      },
+      {
+        "id": "email",
+        "label": "E-mail",
+        "type": "email",
+        "required": true,
+        "group": "Quem está solicitando",
+        "half": true
+      },
+      {
+        "id": "endereco",
+        "label": "Endereço",
+        "type": "text",
+        "required": true,
+        "group": "A edificação"
+      },
+      {
+        "id": "cidade",
+        "label": "Cidade / Estado da edificação",
+        "type": "text",
+        "required": true,
+        "group": "A edificação"
+      },
+      {
+        "id": "atividade",
+        "label": "Tipo da edificação e atividade exercida nela",
+        "type": "textarea",
+        "required": true,
+        "group": "A edificação"
+      },
+      {
+        "id": "area_m2",
+        "label": "Área da edificação (m²)",
+        "type": "number",
+        "required": false,
+        "group": "A edificação",
+        "half": true
+      },
+      {
+        "id": "altura_m",
+        "label": "Altura da edificação (m)",
+        "type": "number",
+        "required": false,
+        "group": "A edificação",
+        "half": true
+      },
+      {
+        "id": "tipo_estrutura",
+        "label": "Tipo de estrutura",
+        "type": "radio",
+        "required": true,
+        "other": true,
+        "options": [
+          "Concreto",
+          "Metálica",
+          "Madeira"
+        ],
+        "group": "A edificação"
+      },
+      {
+        "id": "pessoas_treinamento",
+        "label": "Quantas pessoas farão o treinamento",
+        "type": "number",
+        "required": true,
+        "group": "O treinamento"
+      },
+      {
+        "id": "informacoes_extras",
+        "label": "Informações extras",
+        "type": "textarea",
+        "required": false,
+        "group": "O treinamento"
+      }
+    ]
+  }
+}

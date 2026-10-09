@@ -1,0 +1,13 @@
+{
+    "name": "gotelip/backend",
+    "description": "API RESTful + BFF - Gotelip Engenharia",
+    "require": {
+        "php": ">=8.2",
+        "ext-pdo": "*",
+        "firebase/php-jwt": "^7.1",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
