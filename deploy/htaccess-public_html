@@ -1,0 +1,53 @@
+# Raiz publica (public_html). Vai renomeado para `.htaccess`.
+# Serve o site estatico; /api e /painel tem os seus proprios arquivos.
+
+# ---------- HTTPS obrigatorio ----------
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ---------- Cabecalhos de seguranca ----------
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+    # CSP do site publico. `connect.facebook.net` e `googletagmanager.com` estao
+    # liberados porque os pixels sao carregados por script apos a interacao; sem
+    # isto o pixel e bloqueado sem aviso nenhum no console do visitante.
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://connect.facebook.net https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://connect.facebook.net; img-src 'self' data: https://www.facebook.com https://www.google-analytics.com; style-src 'self'; font-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'"
+</IfModule>
+
+# ---------- Cache ----------
+<IfModule mod_expires.c>
+    ExpiresActive On
+    # Bundle e imagens levam hash ou ?v= no nome: cache longo e seguro.
+    ExpiresByType text/css "access plus 1 year"
+    # `text/javascript` e o que o Apache 2.4 devolve para `.js`; sem ele o bundle
+    # — justamente o arquivo com hash no nome — saia sem cache nenhum.
+    ExpiresByType text/javascript "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    # HTML nao: e o que entrega os nomes novos depois de uma publicacao.
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# ---------- Rotas do site estatico ----------
+# Sem isto o servidor pode listar /assets/ e /fonts/ se o default vier com Indexes.
+Options -Indexes
+
+# Cada pagina e um diretorio com index.html. Sem isto, /servicos/ devolve 403.
+DirectoryIndex index.html
+
+# /pagina -> /pagina/ (mantem o link canonico e evita conteudo duplicado)
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.*)$ /$1/ [L,R=301]

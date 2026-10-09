@@ -1,0 +1,23 @@
+# public_html/api/.htaccess — vai renomeado para `.htaccess`.
+# Front controller unico: tudo cai em index.php, que carrega o codigo de fora
+# do public_html.
+
+RewriteEngine On
+
+# Arquivo real (nenhum aqui alem do index.php) e servido direto; o resto roteia.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+
+# Os cabecalhos da raiz descem para ca e sao errados aqui: a CSP e a do site e o
+# Referrer-Policy e `strict-origin-when-cross-origin`. mod_headers roda DEPOIS do
+# PHP, entao `unset` apagaria tambem o que security_headers() definiu - por isso
+# o valor da API e reescrito aqui, e nao removido.
+<IfModule mod_headers.c>
+    Header always set Content-Security-Policy "default-src 'none'; frame-ancestors 'none'; base-uri 'none'"
+    Header always set Referrer-Policy "no-referrer"
+    Header always set X-Frame-Options "DENY"
+    Header always set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Nada de listagem de diretorio
+Options -Indexes
