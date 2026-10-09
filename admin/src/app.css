@@ -1,0 +1,2128 @@
+/* Tema dark do painel/CRM — UI interna, isolada da identidade do site público.
+   Reaproveita os tokens de marca (brand-900, gold) para não virar outro produto. */
+
+:root {
+  --bg: #0a0d10;
+  --surface: #101519;
+  --surface-2: #182027;
+  --line: #1f2a33;
+  --ink: #f0f4f8;
+  --ink-2: #b6c5d1;
+  --ink-3: #7f94a3;
+  --gold: #ffd000;
+  --gold-600: #e6bb00;
+  --danger: #ff8a7a;
+  --radius: 6px;
+
+  /* Escala de espaçamento de base 4: os degraus intermediários (12, 20, 28) são
+     os que faltam numa escala só de 8, e eram exatamente onde o painel vinha
+     inventando valores avulsos (7px, 9px, 13px, 18px). */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 20px;
+  --s6: 24px;
+  --s7: 32px;
+  --s8: 48px;
+
+  /* Estrutura: uma largura de navegação e uma medida de leitura para o corpo,
+     em vez dos quatro máximos diferentes (720/760/860) que o painel tinha. */
+  --nav: 232px;
+  --measure: 880px;
+
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+/* A altura da tela desce por uma corrente de porcentagens, não por `vh`.
+   Porcentagem é a única medida que todo navegador resolve igual, não muda
+   quando a barra de endereço do celular entra e sai, e não desaparece da
+   folha inteira se a unidade não for reconhecida. `#root` entra na corrente
+   porque é ele que o React monta entre o `body` e o painel. */
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+a { color: var(--gold); }
+
+.state { padding: 24px; color: var(--ink-2); }
+.state[role='alert'] { color: var(--danger); }
+
+/* --- controles --- */
+label { display: grid; gap: 4px; font-size: 13px; color: var(--ink-3); }
+
+input, select, textarea {
+  font: inherit;
+  padding: 8px 10px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+input:focus-visible, select:focus-visible, textarea:focus-visible,
+button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+textarea { resize: vertical; }
+
+/* Campo travado (o `slug`): legível, mas visivelmente fora de edição. */
+input[readonly] { color: var(--ink-3); background: var(--surface-2); cursor: default; }
+
+button {
+  font: inherit;
+  padding: 8px 14px;
+  color: var(--ink-2);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+button:hover { color: var(--ink); border-color: var(--ink-3); }
+
+button.primary {
+  font-weight: 700;
+  color: #0a0d10;
+  background: var(--gold);
+  border-color: var(--gold);
+}
+button.primary:hover { background: var(--gold-600); border-color: var(--gold-600); }
+
+/* --- login --- */
+.login {
+  display: grid;
+  gap: var(--s3);
+  width: min(360px, calc(100% - var(--s7)));
+  margin: clamp(var(--s7), 14vh, 140px) auto;
+  padding: var(--s7) var(--s6) var(--s6);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.login__logo { justify-self: center; width: 196px; height: auto; }
+.login h1 {
+  margin: 0 0 var(--s2);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.login button { display: flex; margin-top: var(--s2); justify-content: center; }
+.login [role='alert'] { margin: 0; font-size: 13px; color: var(--danger); }
+
+/* --- shell: navegação fixa à esquerda, conteúdo rolando à direita ---
+   O painel é sempre a moldura da tela: o shell mede a viewport uma única vez,
+   trava a linha da grade em `minmax(0, 1fr)` e esconde o que passar. Quem rola
+   é o `main`, nunca a página — assim nenhuma view precisa de caso especial e
+   um filho alto demais não consegue empurrar a barra de rolagem para o body.
+   As duas declarações de altura são um degrau: navegador sem `dvh` fica com
+   `vh`, em vez de ficar sem altura nenhuma. */
+.shell {
+  display: grid;
+  grid-template-columns: var(--nav) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+.shell > main {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.side {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 0;
+  background: #050708;
+  border-right: 1px solid var(--line);
+}
+
+.side__brand {
+  display: grid;
+  gap: var(--s1);
+  padding: var(--s5) var(--s4) var(--s4);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+.side__brand img { width: 148px; height: auto; }
+.side__brand-sub {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.side__nav { display: grid; align-content: start; gap: var(--s5); overflow-y: auto; padding: var(--s5) var(--s2); }
+.side__group { display: grid; gap: 2px; }
+/* Mais respiro acima do rótulo do grupo do que abaixo: a distância diz de quem
+   é o rótulo, e os itens ficam colados no que os nomeia. */
+.side__group-title {
+  margin: 0 0 var(--s1);
+  padding: 0 var(--s3);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.side__nav a {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 9px var(--s3);
+  font-size: 14px;
+  color: var(--ink-2);
+  text-decoration: none;
+  border-radius: var(--radius);
+}
+.side__nav a .icon { color: var(--ink-3); }
+.side__nav a:hover { color: var(--ink); background: var(--surface-2); }
+.side__nav a:hover .icon { color: var(--ink-2); }
+/* A seção ativa se identifica pelo ícone dourado e pelo peso do rótulo, não por
+   uma aba colorida na moldura (DESIGN.md §4.2). */
+.side__nav [aria-current] { font-weight: 700; color: var(--ink); background: var(--surface-2); }
+.side__nav [aria-current] .icon { color: var(--gold); }
+
+.side__foot {
+  display: grid;
+  gap: var(--s2);
+  padding: var(--s3) var(--s3) var(--s4);
+  border-top: 1px solid var(--line);
+}
+.side__who {
+  display: flex;
+  gap: var(--s2);
+  align-items: center;
+  min-width: 0;
+  padding: 0 var(--s1);
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.side__who span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.side__foot button { display: flex; gap: var(--s2); align-items: center; justify-content: center; }
+
+/* --- cabeçalho de seção: mesma linha em todas as telas --- */
+.phead {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  gap: var(--s3);
+  align-items: center;
+  flex-wrap: wrap;
+  padding: var(--s3) var(--s5);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.phead__title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.phead__mark {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  color: var(--gold);
+  background: var(--surface-2);
+  border-radius: var(--radius);
+}
+.phead__tools { display: flex; gap: var(--s3); align-items: center; flex: 1; min-width: 260px; }
+.phead__spacer { flex: 1 0 0; }
+.phead__status { font-size: 13px; color: var(--ink-3); }
+.phead .primary { display: inline-flex; gap: 7px; align-items: center; white-space: nowrap; }
+
+.tabs { display: flex; gap: 2px; padding: var(--s1); background: var(--surface); border-radius: 8px; }
+/* 36px de altura: o alvo de toque não pode ser o tamanho do rótulo. */
+.tabs button { min-height: 36px; padding: 0 var(--s4); background: none; border: none; font-size: 13px; }
+.tabs button[aria-selected='true'] {
+  font-weight: 700;
+  color: #0a0d10;
+  background: var(--gold);
+}
+
+/* O campo de busca carrega a lupa dentro da moldura: o ícone diz o que o campo
+   faz antes de o placeholder ser lido. */
+.busca {
+  display: flex;
+  gap: var(--s2);
+  align-items: center;
+  flex: 1;
+  min-width: 200px;
+  padding: 0 10px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.busca .icon { color: var(--ink-3); }
+.busca input { flex: 1; min-width: 0; padding: 8px 0; background: none; border: none; }
+.busca input:focus-visible { outline: none; }
+.busca:focus-within { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* --- CRM -------------------------------------------------------------------
+   Três vistas do mesmo funil. A tarefa é sempre a mesma: varrer, reconhecer o
+   lead certo, agir. A identidade do lead lidera, o compromisso (próxima ação e
+   prazo) é a segunda leitura, a classificação é a terceira. Densidade alta na
+   coluna, porque ali se varre; generosa no detalhe, porque ali se decide. */
+
+/* O CRM é a altura que o `main` lhe entrega: cabeçalho em cima, vista rolando
+   embaixo. Sem `min-height: 0` o item flex se recusa a encolher abaixo do
+   conteúdo e a barra horizontal do quadro escaparia da tela de novo. */
+.crm { display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+/* A vista ocupa o que sobrou da altura e rola por conta própria. */
+.crm > .board, .crm > .lista, .crm > .metricas { flex: 1; min-height: 0; }
+
+/* Rótulo que só o leitor de tela precisa: na coluna estreita o ícone faz o
+   papel do texto, mas quem não vê o ícone continua ouvindo o nome do campo. */
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Um dado com o seu ícone. O ícone nunca encolhe e nunca quebra para a linha
+   de baixo sozinho — ele pertence ao valor que está rotulando. */
+/* `position: relative` não é decoração: o `.sr` de dentro é `position: absolute`
+   e, sem um ancestral posicionado, seu bloco contentor vira a página inteira —
+   ele escapa do `overflow` da coluna e estica o documento até o dobro da tela,
+   trazendo de volta a rolagem por baixo do painel. */
+.meta {
+  position: relative;
+  display: inline-flex;
+  gap: var(--s1);
+  align-items: center;
+  min-width: 0;
+  font-size: 12px;
+  color: var(--ink-3);
+}
+.meta .icon { flex-shrink: 0; }
+.meta__v { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Botão que só carrega ícone: o alvo de toque é a área de 32px, não o glifo de
+   15px dentro dela (PRODUCT.md pede alvos generosos). */
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--ink-3);
+  background: none;
+  border: none;
+  border-radius: var(--radius);
+}
+.icon-btn:hover { color: var(--ink); background: var(--surface-2); }
+
+/* --- kanban ---
+   Sete etapas não cabem em tela nenhuma abaixo de 1800px, então o quadro rola
+   de lado por projeto, não por acidente: scroll-snap prende cada coluna na
+   borda esquerda e no estreito a coluna ocupa quase a largura toda, uma etapa
+   por vez. Cada coluna rola sozinha na vertical, de modo que o cabeçalho da
+   etapa nunca sai de vista quando a fila cresce. */
+.board {
+  display: flex;
+  gap: var(--s3);
+  /* As colunas esticam até o pé do quadro (`stretch`, o padrão), então todas
+     terminam na mesma linha e a barra horizontal fica ancorada embaixo. */
+  align-items: stretch;
+  /* Só o eixo horizontal rola no quadro: a vertical pertence a cada coluna, e
+     com as duas ligadas a barra de baixo voltaria a fugir da tela. */
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: var(--s5);
+  scroll-snap-type: x proximity;
+  scroll-padding-left: var(--s5);
+  overscroll-behavior-x: contain;
+}
+.column {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+}
+.column h2 {
+  display: flex;
+  gap: var(--s2);
+  align-items: center;
+  margin: 0;
+  padding: var(--s3);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+}
+/* A etapa se identifica por um ponto no conteúdo do cabeçalho — nunca por uma
+   aba colorida na moldura (DESIGN.md §4.2). */
+.column h2::before {
+  content: '';
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--stage);
+  border-radius: 50%;
+}
+
+.column .count {
+  margin-left: auto;
+  padding: 1px var(--s2);
+  font-size: 11px;
+  font-weight: 700;
+  color: #0a0d10;
+  background: var(--stage);
+  border-radius: 20px;
+}
+.column-body {
+  display: grid;
+  /* A faixa é presa à largura da coluna. Sem o `minmax(0, ...)` ela cresce até
+     o min-content do maior cartão — um nome comprido bastava para a coluna
+     ganhar barra horizontal própria, que nada no quadro pede. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s2);
+  align-content: start;
+  min-height: 96px;
+  overflow-y: auto;
+  padding: var(--s3);
+  background: color-mix(in srgb, var(--stage) 7%, var(--surface));
+  border: 1px solid var(--line);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  scrollbar-width: thin;
+}
+/* Com passador, é ele que fecha a coluna: o pé arredondado desce um degrau e o
+   corpo vira um trecho reto no meio da moldura. */
+.column:has(.pager) .column-body { border-radius: 0; }
+.column .pager {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0 0 8px 8px;
+  padding: var(--s2);
+}
+.column .pager button { min-height: 32px; }
+
+.column-vazia {
+  margin: 0;
+  padding: var(--s2) 0;
+  font-size: 12px;
+  text-align: center;
+  color: var(--ink-3);
+}
+.column-body .add {
+  display: flex;
+  gap: var(--s2);
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  font-size: 13px;
+  color: var(--stage);
+  background: none;
+  border: 1px dashed color-mix(in srgb, var(--stage) 45%, transparent);
+}
+.column-body .add:hover {
+  color: var(--stage);
+  background: color-mix(in srgb, var(--stage) 10%, transparent);
+  border-color: var(--stage);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s2);
+  padding: var(--s3);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  cursor: grab;
+}
+.card:hover { border-color: var(--stage); }
+.card:active { cursor: grabbing; }
+.card__head {
+  display: flex;
+  gap: var(--s2);
+  align-items: start;
+  justify-content: space-between;
+}
+.card__head strong { min-width: 0; font-size: 14px; line-height: 1.35; overflow-wrap: anywhere; }
+/* A pega só aparece quando o ponteiro chega ao cartão: em repouso ela é ruído,
+   sob o cursor ela é a instrução. No toque, onde não há hover, o cartão abre
+   com um toque e a etapa se troca pelo select do detalhe. */
+.card__head .icon { flex-shrink: 0; color: transparent; transition: color 0.12s ease-out; }
+.card:hover .card__head .icon { color: var(--ink-3); }
+.card__meta { display: grid; gap: var(--s1); min-width: 0; }
+
+.tags { display: flex; flex-wrap: wrap; gap: var(--s1); }
+.tag {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  padding: 3px var(--s2);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-2);
+  background: var(--bg);
+  border-radius: 20px;
+}
+.tag--value { color: var(--gold); }
+.tag--stage { color: #0a0d10; background: var(--stage); }
+
+/* A linha do compromisso: a única do cartão com fundo próprio, porque é a única
+   que cobra uma reação. O atraso troca ícone além da cor. */
+.next {
+  display: flex;
+  gap: var(--s2);
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: var(--s2);
+  font-size: 12px;
+  color: var(--ink-2);
+  background: var(--bg);
+  border-radius: 4px;
+}
+.next .icon { flex-shrink: 0; color: var(--ink-3); }
+.next__t { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.next__d {
+  display: inline-flex;
+  gap: var(--s1);
+  align-items: center;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.next--late { font-weight: 600; color: var(--danger); background: rgba(255, 138, 122, 0.1); }
+.next--late .icon, .next--late .next__d { color: var(--danger); }
+
+/* --- lista ---
+   Dado tabular, não texto: usa a largura toda e alinha em grade, para que etapa
+   e valor se comparem de cima a baixo. */
+.lista {
+  display: grid;
+  gap: var(--s2);
+  align-content: start;
+  overflow-y: auto;
+  margin: 0;
+  padding: var(--s5);
+  list-style: none;
+}
+.lista li {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr) auto;
+  gap: var(--s4);
+  align-items: center;
+  padding: var(--s3) var(--s4);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.lista li:hover { border-color: var(--stage); }
+.lista__id { display: grid; gap: var(--s1); min-width: 0; }
+.lista__id strong { font-size: 14px; }
+.lista__id .card__meta { grid-auto-flow: column; justify-content: start; gap: var(--s4); }
+.lista__next { min-width: 0; }
+.lista__next .next { background: none; padding: 0; }
+.lista__meta {
+  display: flex;
+  gap: var(--s3);
+  align-items: center;
+  justify-content: end;
+  flex-shrink: 0;
+}
+.lista__valor {
+  display: inline-flex;
+  gap: var(--s1);
+  align-items: center;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--gold);
+}
+.state .icon { vertical-align: -3px; margin-right: var(--s2); color: var(--ink-3); }
+
+/* --- métricas --- */
+/* Um painel não é coluna de leitura: a medida de 880px do corpo do site deixava
+   quatro indicadores espremidos e um vazio de mil pixels à direita. A largura
+   aqui é a que os cartões pedem para caber sem encolher o número. */
+.metricas {
+  display: grid;
+  gap: var(--s5);
+  align-content: start;
+  overflow-y: auto;
+  max-width: 1120px;
+  padding: var(--s5);
+}
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: var(--s3); }
+.kpi {
+  display: grid;
+  gap: var(--s2);
+  padding: var(--s5);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.kpi .label {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.kpi strong {
+  font-size: 30px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.kpi small { font-size: 12px; color: var(--ink-3); }
+/* Um número dourado, não quatro: o dourado marca o que a operação persegue. */
+.kpi--destaque strong { color: var(--gold); }
+.kpi--destaque .label .icon { color: var(--gold); }
+
+.dist {
+  display: grid;
+  gap: var(--s3);
+  padding: var(--s5);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.dist h2 {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.dist-row {
+  display: grid;
+  grid-template-columns: minmax(0, 8rem) minmax(0, 1fr) auto auto;
+  gap: var(--s3);
+  align-items: center;
+}
+.dist-label { font-size: 13px; color: var(--ink-2); }
+.bar { height: 9px; background: var(--bg); border-radius: 20px; overflow: hidden; }
+.bar-fill {
+  height: 100%;
+  background: var(--stage);
+  border-radius: 20px;
+  transform-origin: left;
+  transition: transform 0.3s ease-out;
+}
+.dist-n {
+  min-width: 2ch;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--stage);
+}
+/* A fatia vem depois da contagem e em peso menor: quantos é o dado, quanto por
+   cento é a leitura. */
+.dist-pct {
+  min-width: 4ch;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--ink-3);
+}
+
+/* Número abreviado que revela o valor cheio. A dica abre para baixo: o painel
+   rola, e uma dica acima da primeira linha de indicadores seria recortada pela
+   borda de cima. */
+.num { position: relative; display: inline-block; cursor: help; }
+.num:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 3px; }
+.num__exato {
+  position: absolute;
+  top: calc(100% + var(--s2));
+  left: 0;
+  z-index: 3;
+  padding: var(--s1) var(--s2);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: var(--ink);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s ease-out;
+}
+.num:hover .num__exato,
+.num:focus-visible .num__exato { opacity: 1; visibility: visible; }
+@media (prefers-reduced-motion: reduce) { .num__exato { transition: none; } }
+
+/* --- modal de novo lead --- */
+.modal-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: var(--s4);
+  background: rgba(0, 0, 0, 0.65);
+}
+.modal {
+  display: grid;
+  gap: var(--s4);
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  overflow: auto;
+  padding: var(--s5) var(--s6) var(--s6);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.modal header { display: flex; gap: var(--s3); align-items: center; justify-content: space-between; }
+.modal h2 { display: flex; gap: var(--s2); align-items: center; margin: 0; font-size: 17px; }
+.modal h2 .icon { color: var(--gold); }
+.modal-actions { display: flex; gap: var(--s3); justify-content: flex-end; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); }
+@media (max-width: 560px) { .grid-2 { grid-template-columns: 1fr; } }
+
+/* --- detalhe do lead ---
+   Abre por cima do quadro, então escurece o que ficou atrás: sem isso não se
+   sabe que o quadro continua clicável, e um clique fora move um lead sem
+   querer. Contato e edição rápida primeiro; o cadastro, que é leitura, no fim. */
+.detail-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 140;
+  background: rgba(0, 0, 0, 0.5);
+}
+.detail {
+  position: fixed;
+  inset: 0 0 0 auto;
+  z-index: 150;
+  width: min(480px, 100%);
+  display: grid;
+  gap: var(--s5);
+  align-content: start;
+  overflow-y: auto;
+  padding: var(--s4) var(--s5) var(--s8);
+  background: var(--surface);
+  border-left: 1px solid var(--line);
+}
+.detail header {
+  position: sticky;
+  top: calc(var(--s4) * -1);
+  z-index: 1;
+  display: flex;
+  gap: var(--s3);
+  align-items: start;
+  justify-content: space-between;
+  margin: calc(var(--s4) * -1) calc(var(--s5) * -1) 0;
+  padding: var(--s4) var(--s5);
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.detail__id { display: grid; gap: var(--s2); justify-items: start; min-width: 0; }
+.detail__linha { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; }
+.detail__entrada {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 11.5px;
+  color: var(--ink-3);
+}
+.detail__entrada .icon { color: var(--ink-3); }
+.detail h2 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 650;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* O compromisso abre a leitura, então a mesma linha do cartão ganha corpo aqui:
+   é o estado do lead, não um rodapé. Sem próxima ação ele continua na tela,
+   tracejado — o mesmo vocabulário de vazio dos botões de contato. */
+.detail > .next { padding: var(--s3); font-size: 13px; }
+.detail > .next .next__t { white-space: normal; }
+.next--vazio { color: var(--ink-3); background: none; border: 1px dashed var(--line); }
+
+/* Falar com o lead é a ação, não um dado: vira botão, com o meio de contato
+   dito pelo ícone. Sem telefone, o botão permanece — mas apagado e sem link,
+   porque o buraco no cadastro é a informação. */
+.detail__contato { display: grid; gap: var(--s2); }
+.btn-contato {
+  display: flex;
+  gap: var(--s3);
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--s4);
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.btn-contato span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn-contato .icon { flex-shrink: 0; color: var(--gold); }
+.btn-contato:hover { border-color: var(--gold); }
+.btn-contato.is-vazio { color: var(--ink-3); background: none; border-style: dashed; }
+.btn-contato.is-vazio .icon { color: var(--ink-3); }
+
+.detail__bloco { display: grid; gap: var(--s3); }
+.detail__bloco h3 {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* Ficha: a demanda é lida como texto corrido, no maior corpo da gaveta, porque
+   é dela que sai o orçamento. Canal, empreendimento e cidade são etiquetas do
+   caso — descem para uma linha de metadados, cada uma com o ícone do seu tipo. */
+.ficha {
+  display: grid;
+  gap: var(--s3);
+  padding: var(--s4);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.ficha__demanda { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink); }
+.ficha__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1) var(--s4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ficha__meta li {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  min-width: 0;
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+.ficha__meta .icon { flex-shrink: 0; color: var(--ink-3); }
+.ficha__nota { display: grid; gap: var(--s1); padding-top: var(--s3); border-top: 1px solid var(--line); }
+.ficha__nota h4 {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.ficha__nota .icon { color: var(--ink-3); }
+.ficha__nota p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+
+/* Questionário: pergunta e resposta empilhadas e separadas por fio. Rótulo do
+   formulário de incêndio chega a 40 caracteres ("Situação perante o Corpo de
+   Bombeiros"); em duas colunas dentro de 480px isso quebra nas duas metades. */
+.respostas {
+  display: grid;
+  margin: 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.respostas > div { display: grid; gap: 3px; padding: var(--s3) var(--s4); min-width: 0; }
+.respostas > div + div { border-top: 1px solid var(--line); }
+.respostas dt {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.respostas dd { margin: 0; font-size: 14px; line-height: 1.5; color: var(--ink); overflow-wrap: anywhere; }
+
+/* Do tablet para baixo o detalhe deixa de ser gaveta e toma a tela: em 420px de
+   largura, uma gaveta de 440px já era a tela inteira — só que fingindo não ser,
+   com uma faixa de fundo inútil de um lado. */
+@media (max-width: 720px) {
+  .board { padding-inline: var(--s4); scroll-padding-left: var(--s4); }
+  .column { flex-basis: min(86vw, 320px); }
+
+  .lista li { grid-template-columns: minmax(0, 1fr); gap: var(--s3); }
+  .lista__id .card__meta { grid-auto-flow: row; gap: var(--s1); }
+  .lista__meta { justify-content: start; }
+
+  .detail { width: 100%; border-left: none; }
+  .detail-bg { display: none; }
+}
+/* --- páginas: seções colapsáveis sob o cabeçalho comum --- */
+.pages { display: grid; }
+.pages .primary:disabled { color: var(--ink-3); background: var(--surface-2); border-color: var(--line); }
+
+.pages__body {
+  display: grid;
+  gap: var(--s4);
+  width: 100%;
+  max-width: var(--measure);
+  padding: var(--s6) var(--s6) var(--s8);
+}
+/* O texto de apoio fica em medida curta mesmo quando o formulário é largo: uma
+   linha de 880px de explicação obriga o olho a varrer para nada. */
+.pages__body > .hint { max-width: 64ch; }
+
+/* Mais espaço acima do título de grupo do que abaixo: a distância acusa de quem
+   é o rótulo, e o campo seguinte fica colado no que o nomeia. */
+.pages__h {
+  margin: 20px 0 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.panel {
+  display: grid;
+  gap: 16px;
+  padding: 18px 20px 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.panel h2 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.section {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.section > summary {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  padding: 13px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+.section > summary::-webkit-details-marker { display: none; }
+.section > summary:hover { color: var(--gold); }
+.section > summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; border-radius: 8px; }
+.section[open] > summary { border-bottom: 1px solid var(--line); }
+.section[open] > summary .icon { transform: rotate(90deg); }
+.section > summary .icon { color: var(--ink-3); transition: transform 0.15s ease-out; }
+.section__body { display: grid; gap: 18px; padding: 18px; }
+
+/* --- campos --- */
+.field-head { display: grid; gap: 2px; }
+.hint { margin: 0; font-size: 12px; font-weight: 400; line-height: 1.45; color: var(--ink-3); }
+.hint--error { color: var(--danger); }
+.hint code {
+  padding: 1px 5px;
+  font-size: 11px;
+  color: var(--ink-2);
+  background: var(--bg);
+  border-radius: 3px;
+}
+
+/* --- campos calculados pelo painel --------------------------------------
+   Não têm moldura de input: a ausência da caixa é o que diz, antes da leitura
+   da dica, que ali não se digita. */
+.derived { display: grid; gap: 3px; }
+.derived__label { font-size: 13px; color: var(--ink-3); }
+.derived__value {
+  margin: 0;
+  padding: 8px 10px;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--surface-2);
+  border-radius: var(--radius);
+  overflow-wrap: anywhere;
+}
+.derived__value--vazio { font-style: italic; color: var(--ink-3); }
+
+.date-field input[type='date'] { flex: 0 0 auto; }
+
+/* As etiquetas como o site vai renderizá-las: a vírgula vira separação visível
+   antes de virar HTML publicado. */
+.chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.chip {
+  padding: 2px 9px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  background: rgba(255, 208, 0, 0.1);
+  border: 1px solid rgba(255, 208, 0, 0.28);
+  border-radius: 20px;
+}
+
+/* --- editor de blocos --- */
+.block {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  margin: 0;
+  padding: 14px 16px 16px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.block > legend {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  padding: 0 6px;
+  margin-left: -6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.block .count {
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--bg);
+  background: var(--ink-3);
+  border-radius: 20px;
+}
+.block .block { background: var(--surface-2); }
+
+.item { display: grid; gap: 12px; }
+.item-bar { display: flex; gap: 4px; align-items: center; }
+.item-bar button { padding: 7px 9px; line-height: 0; }
+.item-bar .item-open {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  padding: 7px 10px;
+  line-height: 1.4;
+  text-align: left;
+}
+.item-bar .item-open span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.item-bar .item-open .icon { flex-shrink: 0; transition: transform 0.15s ease-out; }
+.item-bar button:disabled { color: var(--line); cursor: default; }
+.item-bar button:disabled:hover { border-color: var(--line); }
+
+.block .add { display: flex; gap: 7px; align-items: center; justify-self: start; }
+.icon { flex-shrink: 0; }
+
+label.inline { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--ink-2); }
+label.inline input { width: 17px; height: 17px; accent-color: var(--gold); }
+
+.row { display: flex; gap: 6px; align-items: center; }
+.row input { flex: 1; min-width: 0; }
+
+.thumb {
+  max-width: 190px;
+  margin-top: 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.editor { min-height: 260px; background: #fff; color: #0f1419; border-radius: var(--radius); }
+
+/* Abaixo de 900px a coluna de navegação vira uma faixa rolável no topo: o
+   rótulo continua ao lado do ícone, e o conteúdo recupera a largura inteira. */
+@media (max-width: 900px) {
+  /* A navegação vira faixa no topo: mede o que precisa e o conteúdo fica com o
+     resto da altura da tela. */
+  .shell {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .side {
+    grid-template-rows: auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--s3);
+    height: auto;
+    padding: var(--s2) var(--s4);
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .side__brand { gap: 0; padding: 0; border-bottom: none; }
+  .side__brand img { width: 104px; }
+  .side__brand-sub { display: none; }
+  .side__nav {
+    display: flex;
+    gap: var(--s1);
+    padding: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .side__nav::-webkit-scrollbar { display: none; }
+  .side__group { display: contents; }
+  .side__group-title { display: none; }
+  .side__nav a { padding: 8px 10px; white-space: nowrap; }
+  .side__foot {
+    grid-template-columns: auto;
+    gap: 0;
+    padding: 0;
+    border-top: none;
+  }
+  .side__who { display: none; }
+}
+
+@media (max-width: 900px) {
+  .coll, .coll__list, .coll__rows, .coll__pane { min-height: 0; overflow: visible; }
+  .coll__grid { grid-template-columns: minmax(0, 1fr); }
+  .coll__list { display: block; border-right: none; }
+  .coll__rows { display: grid; }
+  /* Uma coisa por vez: com um item aberto, o editor toma a tela e "Lista" volta. */
+  .coll[data-aberto] .coll__list { display: none; }
+  .coll:not([data-aberto]) .coll__pane { display: none; }
+  .coll__voltar {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 7px 10px;
+  }
+  .coll__pane-head { flex-wrap: wrap; }
+  .coll__pane-title { flex-basis: 100%; order: 3; }
+}
+
+@media (max-width: 620px) {
+  .phead { padding: var(--s3) var(--s4); }
+  .coll__form, .coll__pane-head { padding-inline: var(--s4); }
+  .coll__pane .confirm { margin-inline: var(--s4); }
+  .phead__tools { order: 3; width: 100%; min-width: 0; }
+  /* `.board` e `.lista` já recuaram na consulta de 720px, junto da mudança
+     estrutural que lhes pertence; repetir aqui só criaria dois donos da mesma
+     medida. */
+  .pages__body, .pixels__body, .metricas { padding-inline: var(--s4); }
+}
+
+/* --- coleção: lista paginada à esquerda, item aberto à direita ---------------
+   A tarefa real é comparar e corrigir — ver o que já está no ar enquanto se
+   edita um item. Por isso as duas colunas rolam separadas, dentro da altura que
+   o `main` já delimita. */
+.coll { display: grid; grid-template-rows: auto minmax(0, 1fr); min-height: 0; }
+.coll__grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 25%) minmax(0, 1fr);
+  min-height: 0;
+}
+
+.coll__list {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  min-height: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+}
+.coll__tools {
+  display: flex;
+  gap: var(--s2);
+  align-items: center;
+  padding: var(--s3);
+  border-bottom: 1px solid var(--line);
+}
+.coll__tools .busca { min-width: 0; }
+.coll__novo { flex-shrink: 0; }
+.coll__novo:disabled { color: var(--ink-3); background: var(--surface-2); border-color: var(--line); cursor: default; }
+.coll__vazio code { padding: 1px 5px; font-size: 11px; color: var(--ink-2); background: var(--bg); border-radius: 3px; }
+
+.coll__rows { display: grid; align-content: start; gap: 2px; margin: 0; padding: var(--s2); overflow-y: auto; list-style: none; }
+.coll__row {
+  display: flex;
+  gap: var(--s3);
+  align-items: center;
+  width: 100%;
+  padding: 10px var(--s3);
+  text-align: left;
+  background: none;
+  border: 1px solid transparent;
+}
+.coll__row:hover { background: var(--surface-2); border-color: var(--line); }
+/* O item aberto se marca pelo fundo e pelo número em dourado — nunca por uma
+   aba colorida na moldura (DESIGN.md §4.2). */
+.coll__row[aria-current] { color: var(--ink); background: var(--surface-2); border-color: var(--ink-3); }
+.coll__row[aria-current] .coll__row-n { color: #0a0d10; background: var(--gold); }
+.coll__row-n {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+  background: var(--bg);
+  border-radius: var(--radius);
+}
+.coll__row-txt { display: grid; gap: 1px; flex: 1; min-width: 0; }
+.coll__row-txt strong {
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.coll__row-txt small { font-size: 12px; color: var(--ink-3); }
+.coll__row .icon { flex-shrink: 0; color: var(--ink-3); }
+
+.coll__vazio {
+  margin: 0;
+  padding: var(--s5) var(--s4);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+.coll__vazio strong { color: var(--ink-2); }
+
+/* Botão que age como link: a ação é secundária e cabe dentro da frase. */
+.linkish {
+  padding: 0;
+  color: var(--gold);
+  background: none;
+  border: none;
+  text-decoration: underline;
+}
+.linkish:hover { color: var(--gold-600); border-color: transparent; }
+
+.pager {
+  display: flex;
+  gap: var(--s2);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s2) var(--s3);
+  border-top: 1px solid var(--line);
+}
+.pager button { padding: 6px 10px; line-height: 0; }
+.pager button:disabled { color: var(--line); cursor: default; }
+.pager button:disabled:hover { border-color: var(--line); }
+.pager__n { font-size: 12px; font-variant-numeric: tabular-nums; color: var(--ink-3); }
+
+.coll__pane { min-height: 0; overflow-y: auto; }
+
+.coll__intro {
+  display: grid;
+  gap: var(--s3);
+  width: min(100%, 58ch);
+  margin-inline: auto;
+  padding: clamp(var(--s7), 12vh, 120px) var(--s5) var(--s7);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+.coll__intro p { margin: 0; }
+.coll__intro-dica { color: var(--ink-3); }
+
+.coll__pane-head {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  gap: var(--s3);
+  align-items: start;
+  padding: var(--s4) var(--s5);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.coll__pane-title { flex: 1; min-width: 0; }
+.coll__pane-title h2 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+.coll__rota { margin: var(--s1) 0 0; font-size: 12px; color: var(--ink-3); }
+.coll__rota code {
+  padding: 1px 5px;
+  font-size: 11px;
+  color: var(--gold);
+  background: var(--surface-2);
+  border-radius: 3px;
+}
+.coll__pane-acoes { display: flex; gap: var(--s1); flex-shrink: 0; }
+.coll__pane-acoes button { display: inline-flex; gap: 6px; align-items: center; padding: 7px 10px; }
+.coll__pane-acoes button:disabled { color: var(--line); cursor: default; }
+.coll__pane-acoes button:disabled:hover { border-color: var(--line); }
+
+.coll__voltar { display: none; }
+
+.coll__pane .confirm { margin: var(--s4) var(--s5) 0; }
+
+.coll__form {
+  display: grid;
+  gap: var(--s4);
+  width: min(100%, 940px);
+  margin-inline: auto;
+  padding: var(--s6) var(--s6) var(--s8);
+}
+
+/* Aviso de falha no upload: fica colado na barra do editor, onde o envio foi
+   pedido, em vez de um alert() que trava a aba. */
+.editor__erro {
+  margin: 0;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: var(--danger);
+  background: rgba(255, 138, 122, 0.1);
+  border: 1px solid rgba(255, 138, 122, 0.35);
+  border-radius: 0;
+}
+
+/* --- pixels: cada provedor é um cartão com estado próprio --- */
+.pixels { display: grid; }
+.pixels__body {
+  display: grid;
+  gap: var(--s3);
+  width: 100%;
+  max-width: var(--measure);
+  padding: var(--s6) var(--s6) var(--s8);
+}
+/* O texto de apoio fica em medida curta mesmo quando o cartão é largo. */
+.pixels__intro { max-width: 64ch; margin: 0 0 var(--s2); font-size: 14px; line-height: 1.6; color: var(--ink-2); }
+
+.provider {
+  display: grid;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.provider > header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 16px 18px;
+}
+.provider > header h2 { margin: 0 0 3px; font-size: 15px; }
+.provider > header p { max-width: 48ch; margin: 0; font-size: 13px; line-height: 1.5; color: var(--ink-3); }
+
+/* O provedor se identifica por um ícone em bloco, não por uma aba colorida. */
+.provider__mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: var(--ink-2);
+  background: var(--surface-2);
+  border-radius: 8px;
+}
+.provider--on .provider__mark { color: var(--gold); }
+
+.pill {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 4px 11px 4px 9px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--ink-3);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+.provider--on .pill { color: #7ee2a8; border-color: rgba(126, 226, 168, 0.35); }
+.provider--paused .pill { color: var(--ink-2); }
+.provider--off .pill { color: var(--danger); border-color: rgba(255, 138, 122, 0.3); }
+
+.provider__body {
+  display: grid;
+  gap: 18px;
+  padding: 4px 18px 18px;
+}
+
+.provider > footer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 18px;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  border-radius: 0 0 10px 10px;
+}
+.provider__status { font-size: 13px; color: var(--ink-3); }
+.provider__status.is-error { color: var(--danger); }
+
+.field-head__title { display: inline-flex; gap: 6px; align-items: center; }
+.hint--inset { display: flex; gap: 7px; align-items: start; margin-top: -8px; }
+.ed .hint--inset { margin-top: 0; }
+.hint--inset .icon { margin-top: 2px; }
+
+/* Confirmação inline: janela nativa bloqueia a aba e apaga o contexto do campo. */
+.confirm {
+  display: grid;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1px solid rgba(255, 138, 122, 0.35);
+  border-radius: 8px;
+}
+.confirm p { max-width: 54ch; margin: 0; font-size: 13px; line-height: 1.55; color: var(--ink-2); }
+.confirm__actions { display: flex; gap: 10px; }
+
+button.danger { color: var(--danger); border-color: rgba(255, 138, 122, 0.45); }
+button.danger:hover { color: #0a0d10; background: var(--danger); border-color: var(--danger); }
+
+.provider footer button,
+.confirm__actions button,
+.row button { display: inline-flex; gap: 7px; align-items: center; }
+
+@media (max-width: 560px) {
+  .provider > header { grid-template-columns: auto 1fr; }
+  .provider > header .pill { grid-column: 2; justify-self: start; }
+  .provider > footer { flex-wrap: wrap; }
+}
+
+/* --- formulários de registro (empresa, projeto) ------------------------------
+   O editor genérico desenha qualquer JSON, e por isso não sabe nada: empilha os
+   campos na ordem em que o MySQL devolve a chave, todos na mesma largura, sem
+   dizer quais formam uma coisa só. Onde o registro tem forma conhecida, a tela
+   é desenhada à mão com este vocabulário: grupo com marca de ícone (`.ed-grupo`),
+   campo com o ícone dentro da moldura (`.ed-f`), linha de campos dimensionados
+   pelo dado (`.ed-linha`) e a prévia do que o site vai publicar (`.ed-preview`). */
+.ed { display: grid; align-content: start; gap: var(--s6); max-width: 960px; }
+
+/* Mesma linguagem de cartão da tela de Pixels: marca de ícone, título, nota. */
+.ed-grupo {
+  display: grid;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.ed-grupo > header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--s3);
+  align-items: start;
+  padding: var(--s5) var(--s6) 0;
+}
+.ed-grupo > header h2 { margin: 0 0 3px; font-size: 15px; }
+.ed-grupo > header p {
+  max-width: 62ch;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+.ed-grupo__mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: var(--gold);
+  background: var(--surface-2);
+  border-radius: 8px;
+}
+.ed-grupo__body { display: grid; gap: var(--s5); padding: var(--s5) var(--s6) var(--s6); }
+
+/* A largura é a do dado: UF cabe em duas letras e um CEP em oito dígitos, então
+   uma caixa de 790px para qualquer um dos dois mente sobre o que se espera ali. */
+.ed-linha { display: grid; gap: var(--s5); }
+@media (min-width: 720px) {
+  .ed-linha--2 { grid-template-columns: 1fr 1fr; }
+  .ed-linha--cidade { grid-template-columns: minmax(0, 1fr) 84px 140px; }
+}
+
+.ed-f { display: grid; align-content: start; gap: 5px; }
+.ed-f__label { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+/* O ícone mora dentro da moldura, como na busca do CRM: o campo se identifica
+   sem gastar uma linha de rótulo a mais. */
+.ed-f__box {
+  display: flex;
+  gap: var(--s2);
+  align-items: center;
+  min-width: 0;
+  padding: 0 10px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color 0.15s ease-out;
+}
+.ed-f__box .icon { color: var(--ink-3); transition: color 0.15s ease-out; }
+.ed-f__box input { flex: 1; min-width: 0; padding: 9px 0; background: none; border: none; }
+.ed-f__box input:focus-visible { outline: none; }
+.ed-f__box:hover { border-color: var(--ink-3); }
+.ed-f__box:focus-within { border-color: var(--gold); outline: 2px solid var(--gold); outline-offset: 2px; }
+.ed-f__box:focus-within .icon { color: var(--gold); }
+.ed-f__box--erro { border-color: var(--danger); }
+.ed-f__box--erro .icon { color: var(--danger); }
+.ed-f__uf { text-transform: uppercase; letter-spacing: 0.08em; }
+.ed-f textarea { padding: 10px; line-height: 1.55; }
+
+.ed-derived__head { display: inline-flex; gap: 6px; align-items: center; }
+.ed .derived__value { font-variant-numeric: tabular-nums; }
+
+/* --- o rodapé montado -------------------------------------------------------
+   Os campos acima só ganham pontuação na outra ponta: `CNPJ … · CREA-MG`,
+   `Cidade, UF · CEP`. Sem a linha pronta à vista, a vírgula que falta no
+   endereço só aparece depois de publicada. A composição é a mesma de
+   site/build/render.js (`foot`) — se ela mudar lá, muda aqui. */
+/* A prévia não é mais um campo da pilha: é o resultado dela. A linha acima e o
+   respiro extra marcam a virada de "o que você escreve" para "o que sai". */
+.ed-preview {
+  display: grid;
+  gap: var(--s4);
+  margin-top: var(--s3);
+  padding: var(--s5) var(--s6) var(--s6);
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.ed-preview__tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.ed-preview__cols { display: grid; gap: var(--s6); }
+@media (min-width: 720px) { .ed-preview__cols { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); } }
+.ed-preview p { margin: 0 0 var(--s2); font-size: 13px; line-height: 1.6; color: var(--ink-3); }
+.ed-preview h3 {
+  margin: 0 0 var(--s2);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.ed-preview p.ed-preview__desc { max-width: 46ch; color: var(--ink-2); }
+.ed-preview p.ed-preview__note { font-size: 12px; }
+.ed-preview p.ed-preview__forte { font-weight: 700; color: var(--gold); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ed-f__box, .ed-f__box .icon { transition-duration: 0.1s; }
+}
+
+/* --- editor de projeto ------------------------------------------------------
+   Um projeto é uma foto com legenda antes de ser um registro: na vitrine o
+   cliente vê a imagem, a etiqueta por cima dela e três linhas de texto. O
+   editor genérico mostrava a foto como um caminho de texto — e só desenhava a
+   miniatura de `/uploads/`, então as seis fotos que vieram com o site não
+   apareciam em lugar nenhum do painel. Aqui a imagem lidera o formulário. */
+.pj { gap: var(--s6); }
+
+.pj-foto { display: grid; gap: var(--s5); }
+@media (min-width: 760px) { .pj-foto { grid-template-columns: 232px minmax(0, 1fr); } }
+
+/* Proporção fixa: a vitrine recorta em 4:3, então uma prévia de altura livre
+   mostraria um enquadramento que o site não vai publicar. */
+.pj-foto__quadro {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.pj-foto__quadro img { width: 100%; height: 100%; object-fit: cover; }
+.pj-foto__vazio {
+  display: grid;
+  gap: var(--s2);
+  justify-items: center;
+  font-size: 12px;
+  text-align: center;
+  color: var(--ink-3);
+}
+.pj-foto__ctrl { display: grid; align-content: start; gap: var(--s3); }
+.pj-foto__ctrl button { display: inline-flex; gap: 7px; align-items: center; justify-self: start; }
+
+/* --- entregas ---------------------------------------------------------------
+   São frases de uma linha. O editor genérico as fechava em acordeão, então
+   corrigir uma vírgula custava dois cliques e o texto ficava cortado enquanto
+   fechado. A linha é o campo. */
+.pj-lista { display: grid; gap: var(--s3); }
+.pj-lista__itens { display: grid; gap: var(--s3); margin: 0; padding: 0; list-style: none; }
+.pj-lista__itens li {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) auto;
+  gap: var(--s2);
+  align-items: center;
+}
+.pj-lista__n {
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--ink-3);
+}
+/* Os botões só ganham contorno quando a linha é alvo: em repouso, doze botões
+   emoldurados competiriam com o texto que se está lendo. */
+.pj-lista__acoes { display: flex; gap: 2px; }
+.pj-lista__acoes button {
+  padding: 7px 8px;
+  line-height: 0;
+  color: var(--ink-3);
+  background: none;
+  border-color: transparent;
+}
+.pj-lista__itens li:hover .pj-lista__acoes button,
+.pj-lista__acoes button:focus-visible { color: var(--ink-2); border-color: var(--line); }
+.pj-lista__acoes button:hover { color: var(--ink); border-color: var(--ink-3); }
+.pj-lista__acoes button:disabled { color: var(--line); cursor: default; }
+.pj-lista__itens li:hover .pj-lista__acoes button:disabled { border-color: transparent; }
+.pj-lista__add { display: inline-flex; gap: 7px; align-items: center; justify-self: start; }
+
+/* --- destaque na home -------------------------------------------------------
+   A caixa de seleção solta no meio dos campos não dizia o que promovia. Aqui a
+   linha inteira é o alvo e a consequência está escrita nela. */
+.pj-destaque {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  gap: var(--s3);
+  align-items: center;
+  padding: var(--s3) var(--s4);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s ease-out;
+}
+.pj-destaque:hover { border-color: var(--ink-3); }
+.pj-destaque:has(input:focus-visible) { outline: 2px solid var(--gold); outline-offset: 2px; }
+.pj-destaque input { width: 17px; height: 17px; accent-color: var(--gold); }
+.pj-destaque__mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  color: var(--ink-3);
+  background: var(--surface-2);
+  border-radius: 8px;
+  transition: color 0.15s ease-out;
+}
+.pj-destaque:has(input:checked) { border-color: rgba(255, 208, 0, 0.35); }
+.pj-destaque:has(input:checked) .pj-destaque__mark { color: var(--gold); }
+.pj-destaque__txt { display: grid; gap: 2px; }
+.pj-destaque__txt strong { font-size: 14px; color: var(--ink); }
+.pj-destaque__txt small { font-size: 12px; line-height: 1.45; color: var(--ink-3); }
+
+/* --- o cartão da vitrine, montado -------------------------------------------
+   Mesma composição de site/build/pages.js (`projetos`, `.gallery`): etiqueta
+   por cima da foto, categoria acima do título, contexto embaixo. */
+.pj-card {
+  display: grid;
+  gap: var(--s4);
+  max-width: 320px;
+  padding: var(--s4);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.pj-card__thumb {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  color: var(--ink-3);
+  background: var(--bg);
+  border-radius: 6px;
+}
+.pj-card__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pj-card__badge {
+  position: absolute;
+  right: var(--s2);
+  bottom: var(--s2);
+  max-width: calc(100% - var(--s4));
+  padding: 3px 9px;
+  font-size: 11px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #0a0d10;
+  background: var(--gold);
+  border-radius: 20px;
+}
+.pj-card__cap { display: grid; gap: 3px; }
+.pj-card__cat {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.pj-card__cap strong { font-size: 15px; line-height: 1.3; color: var(--ink); }
+.pj-card__meta { font-size: 12px; line-height: 1.45; color: var(--ink-3); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pj-destaque, .pj-destaque__mark { transition-duration: 0.1s; }
+}
+
+/* --- editor de pergunta frequente -------------------------------------------
+   O registro mais curto do painel — `{q, a}` — e por isso o mais fácil de
+   desenhar errado: dois campos de texto soltos não dizem nada sobre o que eles
+   viram. No site cada par é um `<details>` da seção de perguntas, o primeiro da
+   lista nasce aberto, e todos alimentam o `FAQPage` que o Google lê. A moldura
+   única é o que diz que pergunta e resposta são uma coisa só. */
+.faq-ed { gap: var(--s5); max-width: 820px; }
+
+.faq-ed__par {
+  display: grid;
+  gap: var(--s5);
+  padding: var(--s6);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+/* Marca à esquerda do campo: o glifo diz qual metade do par é qual antes de o
+   rótulo ser lido — a mesma função que o ícone tem dentro dos outros campos. */
+.faq-ed__lado { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--s3); }
+.faq-ed__mark {
+  display: grid;
+  place-items: center;
+  align-self: start;
+  width: 32px;
+  height: 32px;
+  margin-top: 20px;
+  background: var(--surface-2);
+  border-radius: 8px;
+}
+.faq-ed__mark--q { color: var(--gold); }
+.faq-ed__mark--a { color: var(--ink-2); }
+.faq-ed__mark--star { width: 26px; height: 26px; margin-top: 0; color: var(--gold); }
+
+.faq-ed__conta {
+  display: flex;
+  gap: var(--s2);
+  margin: 0;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.faq-ed__sep { color: var(--line); }
+
+/* A posição na lista muda o que o visitante lê sem clicar: isso é informação de
+   publicação, não decoração, então ganha a cor da marca e uma linha própria. */
+.faq-ed__primeira {
+  display: flex;
+  gap: var(--s3);
+  align-items: center;
+  margin: 0;
+  padding: var(--s3) var(--s4);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  background: rgba(255, 208, 0, 0.06);
+  border: 1px solid rgba(255, 208, 0, 0.28);
+  border-radius: 8px;
+}
+.faq-ed__primeira strong { color: var(--ink); }
+
+.faq-ed__toggle {
+  display: flex;
+  gap: var(--s2);
+  align-items: center;
+  justify-self: start;
+  font-size: 13px;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.faq-ed__toggle input { width: 16px; height: 16px; accent-color: var(--gold); }
+
+/* --- a prévia do acordeão ---------------------------------------------------
+   `<details>` nativo, a mesma marcação de site/build/render.js (`faqSection`):
+   abrir aqui é abrir lá. Sem isto, a quebra de linha da resposta só aparecia
+   depois de publicada. */
+.faq-prev {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.faq-prev > summary {
+  display: flex;
+  gap: var(--s3);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s3) var(--s4);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+.faq-prev > summary::-webkit-details-marker { display: none; }
+.faq-prev > summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; border-radius: 8px; }
+.faq-prev > summary .icon { flex-shrink: 0; color: var(--ink-3); transition: transform 0.15s ease-out; }
+.faq-prev[open] > summary .icon { transform: rotate(90deg); }
+.faq-prev[open] > summary { border-bottom: 1px solid var(--line); }
+.faq-prev p {
+  max-width: 68ch;
+  margin: 0;
+  padding: var(--s4);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  white-space: pre-wrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-prev > summary .icon { transition-duration: 0.1s; }
+}
+
+/* --- etapas do funil --------------------------------------------------------
+   A lista é o quadro visto de lado: a ordem daqui é a ordem das colunas, então
+   a cor aparece como faixa à esquerda de cada linha — a mesma que o Kanban usa
+   no topo da coluna — e a contagem de leads fica à vista, porque é ela que diz
+   o custo de excluir. As três fixas não somem da lista: uma configuração que
+   esconde o que não se pode mudar deixa quem lê achando que perdeu a etapa. */
+.et__lista { display: grid; gap: var(--s3); margin: 0; padding: 0; list-style: none; }
+
+.et {
+  display: grid;
+  grid-template-columns: 6px minmax(0, 1fr) auto auto;
+  gap: var(--s3);
+  align-items: center;
+  padding: var(--s3) var(--s4) var(--s3) 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.et--fixa { grid-template-columns: 6px minmax(0, 1fr) auto; background: var(--surface-2); }
+
+/* A faixa é a cor da coluna, não enfeite: ela é o que liga esta linha àquela
+   coluna do quadro. Ocupa a altura toda porque a coluna também ocupa. */
+.et__cor { align-self: stretch; min-height: 46px; }
+.et__cor--edit { position: relative; display: grid; cursor: pointer; }
+.et__cor--edit span { display: block; width: 100%; height: 100%; }
+/* O seletor nativo abre a paleta do sistema; a faixa colorida é o alvo. */
+.et__cor--edit input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.et__cor--edit:focus-within { outline: 2px solid var(--gold); outline-offset: -2px; }
+
+.et__corpo { display: grid; gap: 4px; min-width: 0; }
+.et__nome { display: flex; gap: var(--s2); align-items: center; margin: 0; font-size: 14px; font-weight: 600; }
+.et__lock {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  padding: 1px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+.et__porque, .et__slug { max-width: 62ch; margin: 0; font-size: 12px; line-height: 1.45; color: var(--ink-3); }
+.et__slug code {
+  padding: 1px 5px;
+  font-size: 11px;
+  color: var(--ink-2);
+  background: var(--surface-2);
+  border-radius: 3px;
+}
+
+/* Quantos leads a coluna carrega. É o número que a confirmação de exclusão usa. */
+.et__n {
+  min-width: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  color: var(--ink-2);
+}
+
+.et__acoes { display: flex; gap: 2px; }
+.et__acoes button {
+  padding: 7px 8px;
+  line-height: 0;
+  color: var(--ink-3);
+  background: none;
+  border-color: transparent;
+}
+.et:hover .et__acoes button, .et__acoes button:focus-visible { color: var(--ink-2); border-color: var(--line); }
+.et__acoes button:hover { color: var(--ink); border-color: var(--ink-3); }
+.et__acoes button:disabled { color: var(--line); cursor: default; }
+.et:hover .et__acoes button:disabled { border-color: transparent; }
+
+/* A confirmação toma a linha inteira: ela precisa caber o destino dos leads. */
+.et__confirm {
+  grid-column: 2 / -1;
+  display: grid;
+  gap: var(--s3);
+  margin-top: var(--s2);
+  padding: var(--s3) var(--s4);
+  background: var(--surface);
+  border: 1px solid rgba(255, 138, 122, 0.35);
+  border-radius: 8px;
+}
+.et__confirm p { max-width: 60ch; margin: 0; font-size: 13px; line-height: 1.55; color: var(--ink-2); }
+.et__destino { display: flex; gap: var(--s2); align-items: center; font-size: 13px; }
+.et__destino select { min-width: 180px; }
+
+.et__nova {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  gap: var(--s3);
+  align-items: center;
+  padding-top: var(--s2);
+}
+.et__nova .et__cor { min-height: 38px; border-radius: var(--radius); overflow: hidden; }
+.et__nova .primary { display: inline-flex; gap: 7px; align-items: center; }
+
+@media (max-width: 700px) {
+  .et, .et--fixa { grid-template-columns: 6px minmax(0, 1fr) auto; }
+  .et__acoes { grid-column: 2 / -1; }
+  .et__nova { grid-template-columns: 40px minmax(0, 1fr); }
+  .et__nova .primary { grid-column: 2; justify-self: start; }
+}
+
+/* --- histórico do lead ------------------------------------------------------
+   `leads.notes` é campo único e sobrescrevível: cada acréscimo apagava o
+   anterior, então a operação escolhia entre reescrever a observação e perder o
+   registro da ligação. Aqui cada acréscimo é uma linha com autor e data. O
+   próprio comentário fica alinhado à direita e com a cor da etapa na borda,
+   como numa conversa — quem escreveu importa tanto quanto o que foi escrito. */
+/* --- anotações do lead ---
+   Não é um fio de conversa: é o caderno do caso. Nada de avatar nem de balão —
+   a data carimba a linha, o autor assina discreto e o texto corre. A moldura é
+   a mesma do questionário, para que os dois blocos de leitura da gaveta sejam
+   reconhecíveis como um par. */
+.cmt { display: grid; gap: var(--s3); }
+.cmt h3 { display: flex; gap: var(--s2); align-items: center; }
+.cmt h3 .count {
+  padding: 1px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--bg);
+  background: var(--ink-3);
+  border-radius: 20px;
+}
+
+.cmt__vazio {
+  display: flex;
+  gap: var(--s3);
+  align-items: start;
+  margin: 0;
+  padding: var(--s3) var(--s4);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-3);
+  background: var(--bg);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+}
+.cmt__vazio .icon { margin-top: 2px; flex-shrink: 0; }
+
+.cmt__lista {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.cmt__item { display: grid; padding: var(--s3) var(--s4); min-width: 0; }
+.cmt__item + .cmt__item { border-top: 1px solid var(--line); }
+
+.cmt__corpo { display: grid; gap: var(--s1); min-width: 0; }
+.cmt__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  align-items: baseline;
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--ink-3);
+}
+/* A data lidera porque é o que se procura ao reler o caso. Numeral tabular
+   para que os carimbos fiquem alinhados de uma linha para a outra. */
+.cmt__data {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  color: var(--ink-2);
+}
+.cmt__meta strong { font-weight: 500; color: var(--ink-3); }
+.cmt__editado {
+  font-size: 11px;
+  font-style: italic;
+  color: var(--ink-3);
+  cursor: help;
+}
+.cmt__texto {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+  /* O texto sai como foi digitado: um relato de visita vem em parágrafos. */
+  white-space: pre-wrap;
+}
+
+/* As ações só aparecem na anotação sob o cursor ou com foco: três botões em
+   cada linha competiriam com o texto que se está lendo. */
+.cmt__acoes { display: inline-flex; gap: var(--s1); margin-left: auto; opacity: 0; transition: opacity 0.15s ease-out; }
+.cmt__item:hover .cmt__acoes, .cmt__acoes:focus-within { opacity: 1; }
+.cmt__acoes button {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 11.5px;
+  color: var(--ink-3);
+  background: none;
+  border-color: transparent;
+}
+.cmt__acoes button:hover { color: var(--ink); border-color: var(--line); }
+
+.cmt__confirm {
+  display: grid;
+  gap: var(--s2);
+  padding: var(--s3);
+  font-size: 13px;
+  color: var(--ink-2);
+  background: var(--surface);
+  border: 1px solid rgba(255, 138, 122, 0.35);
+  border-radius: 8px;
+}
+.cmt__confirm-acoes { display: flex; gap: var(--s2); }
+.cmt__confirm-acoes button { display: inline-flex; gap: 5px; align-items: center; padding: 5px 11px; font-size: 13px; }
+
+.cmt__novo { display: grid; }
+.cmt-caixa { display: grid; gap: var(--s2); min-width: 0; }
+.cmt-caixa textarea {
+  width: 100%;
+  min-height: 42px;
+  background: var(--bg);
+  padding: 10px var(--s3);
+  font-size: 14px;
+  line-height: 1.55;
+  resize: none;
+}
+.cmt-caixa__acoes { display: flex; gap: var(--s2); justify-content: flex-end; }
+.cmt-caixa__acoes button { padding: 6px 14px; font-size: 13px; }
+.cmt-caixa__acoes .primary:disabled {
+  color: var(--ink-3);
+  background: var(--surface-2);
+  border-color: var(--line);
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmt__acoes { transition-duration: 0.1s; }
+}
+/* Sem cursor não há hover: no toque as ações ficam sempre visíveis. */
+@media (hover: none) {
+  .cmt__acoes { opacity: 1; }
+}
+
+/* --- galeria ----------------------------------------------------------------
+   Cada posição de imagem do site é um cartão com a foto que está no ar. A
+   moldura respeita a proporção que o site publica (`aspect-ratio` vem do slot):
+   uma prévia de altura livre mostraria um enquadramento que a página vai
+   recortar, e o recorte é justamente o que se está escolhendo. */
+.gal-grid {
+  display: grid;
+  gap: var(--s5);
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+.gal-card { display: grid; gap: var(--s3); align-content: start; }
+.gal-card__quadro {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.gal-card__quadro img { width: 100%; height: 100%; object-fit: cover; }
+.gal-card__vazio {
+  display: grid;
+  gap: var(--s2);
+  justify-items: center;
+  font-size: 12px;
+  text-align: center;
+  color: var(--ink-3);
+}
+.gal-card__txt { display: grid; gap: 3px; }
+.gal-card__txt strong { font-size: 13px; }
+.gal-card__txt small { font-size: 12px; line-height: 1.45; color: var(--ink-3); }
+.gal-card__acoes { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.gal-card__acoes button { display: inline-flex; gap: 7px; align-items: center; font-size: 12px; }
+
+/* A biblioteca abre em modal: a lista cresce a cada envio e a escolha é entre
+   fotos. Uma linha por foto em vez de uma grade de quadrados — é a proporção que
+   decide se a foto serve à posição, e quadrado recortado esconde justamente isso. */
+.gal-modal { max-width: 560px; }
+.gal-lib { display: grid; gap: var(--s2); margin: 0; padding: 0; list-style: none; }
+.gal-lib li {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) auto;
+  gap: var(--s3);
+  align-items: center;
+}
+.gal-lib .confirm { grid-column: 1 / -1; }
+.gal-lib__foto {
+  width: 76px;
+  padding: 0;
+  overflow: hidden;
+  line-height: 0;
+  border-radius: 6px;
+}
+.gal-lib__foto img { width: 100%; height: 56px; object-fit: cover; }
+.gal-lib__foto[aria-current] { border-color: var(--gold); }
+.gal-lib__meta { display: grid; gap: 2px; }
+.gal-lib__meta strong { font-size: 13px; font-variant-numeric: tabular-nums; }
+.gal-lib__meta small { font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.gal-lib__apagar { padding: 7px 8px; line-height: 0; color: var(--ink-3); }
+.gal-lib__apagar:hover:not(:disabled) { color: var(--danger); border-color: var(--danger); }
+.gal-lib__apagar:disabled { color: var(--line); cursor: not-allowed; }
+.gal-card__txt strong { display: flex; gap: var(--s2); align-items: baseline; justify-content: space-between; }
+.gal-card__ratio { font-size: 11px; font-weight: 600; color: var(--ink-3); font-variant-numeric: tabular-nums; }
