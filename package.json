@@ -1,0 +1,7 @@
+{
+  "name": "gotelip",
+  "private": true,
+  "scripts": {
+    "iniciar": "node iniciar.mjs"
+  }
+}

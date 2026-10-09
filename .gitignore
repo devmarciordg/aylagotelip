@@ -147,3 +147,38 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# ---- Projeto Gotelip ----
+/backend/vendor/
+/backend/.env
+node_modules/
+dist/
+.DS_Store
+/backend/public/uploads/
+/site/blog/*/
+/site/servicos/*/
+
+/deploy/release/
+
+# Segredos e estado local
+.env
+.env.*
+!.env.example
+docker-compose.override.yml
+*.pem
+*.key
+**/.impeccable/*.local.json
+**/.impeccable/hook.cache.json
+**/.impeccable/questions/
+*.tsbuildinfo
+
+# Documentos internos e ferramentas de IA (ficam só na máquina local)
+TASK.md
+PRODUCT.md
+GEMINI.md
+dossie-*.md
+skills-lock.json
+.agents/
+.codex/
+.gemini/
+**/.impeccable/
