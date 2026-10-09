@@ -1,0 +1,77 @@
+// Design tokens — Gotelip Engenharia
+// Par obrigatório: dourado e cinza-quase-preto azulado ciano andam juntos. #ffd000 nunca vira texto sobre branco (1.6:1).
+
+:root {
+  // Marca — Cinza quase preto com nuance sutil azulada ciano (slate-cyan)
+  --brand-950: #050708; // superfície mais profunda: barra de topo e rodapé
+  --brand-900: #0a0d10; // corporativo quase preto azulado ciano — campo escuro dominante
+  --brand-800: #101519; // superfície escura secundária / cartões no escuro
+  --brand-700: #182027; // superfícies elevadas e bordas no escuro
+  --gold: #ffd000; // única cor de ação
+  --gold-600: #e6bb00; // hover
+
+  // Neutros
+  --ink: #0f1419; // corpo de texto — 16.8:1 no branco
+  --muted: #536471; // secundário — 5.8:1 no branco (WCAG AA)
+  --paper: #ffffff;
+  --paper-2: #f4f6f8; // faixa alternada fria sutil
+  --line: #e0e5e9; // divisórias em fundo claro
+  --line-dark: #1b242c; // divisórias em campo escuro
+  --line-dark-2: #10161b; // divisor sutil dentro do próprio campo escuro
+
+  // Texto sobre campo escuro, do mais forte ao mais discreto. Todos medidos
+  // contra --brand-900 (#0a0d10); o mais fraco ainda dá 4.9:1, acima do mínimo AA (4.5:1).
+  --on-dark: #f0f4f8;   // corpo de texto (> 15:1)
+  --on-dark-2: #d2dde5; // introduções e leads (> 12:1)
+  --on-dark-3: #9eb2c0; // secundário, metadados (> 7.5:1)
+  --on-dark-4: #718797; // rodapé e notas discretas (4.9:1)
+  --danger-on-dark: #ffb4ab; // erro de formulário em campo escuro
+
+  // Tipografia — Moderna, séria e de alta legibilidade
+  --font-display: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font: var(--font-body);
+
+  --step--1: clamp(0.8125rem, 0.8rem + 0.08vw, 0.875rem);   // 13px - 14px (legendas, badges, tags)
+  --step-0: clamp(0.9375rem, 0.92rem + 0.15vw, 1.03125rem); // 15px - 16.5px (corpo de texto padrão)
+  --step-1: clamp(1.125rem, 1.08rem + 0.35vw, 1.28rem);     // 18px - 20.5px (subtítulos, introduções)
+  --step-2: clamp(1.35rem, 1.25rem + 0.65vw, 1.65rem);      // 21.6px - 26.4px (títulos h3, títulos de cartões)
+  --step-3: clamp(1.65rem, 1.45rem + 1.1vw, 2.2rem);        // 26.4px - 35.2px (títulos h2 de seção)
+  --step-4: clamp(2.1rem, 1.75rem + 1.8vw, 2.85rem);        // 33.6px - 45.6px (título h1 principal)
+
+  // Ritmo — escala de 4
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+
+  --radius-sm: 2px;
+  --radius: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 9999px;
+  --wrap: 1180px;
+  // Campo escuro (hero, faixa de autoridade, topo das páginas internas).
+  // Brilho difuso sutil no canto superior direito + queda vertical: profundidade
+  // suave sem sobrecarregar a visão.
+  --field-dark:
+    radial-gradient(115% 85% at 88% 0%, rgb(255 208 0 / 3.8%) 0%, transparent 58%),
+    linear-gradient(180deg, var(--brand-800) 0%, var(--brand-900) 62%);
+
+  --shadow: 0 1px 3px rgb(17 22 27 / 4%), 0 3px 8px -2px rgb(17 22 27 / 5%);
+  --shadow-card: 0 2px 6px -1px rgb(17 22 27 / 5%);
+  --shadow-hover: 0 6px 16px -3px rgb(17 22 27 / 9%), 0 2px 4px -1px rgb(17 22 27 / 4%);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  // Movimento. Todo deslocamento decorativo passa por estes valores,
+  // para que `prefers-reduced-motion` os zere num lugar só — um componente novo
+  // que use os tokens já nasce em conformidade.
+  --lift: -2px;   // elevação de cartão no hover
+  --nudge: 3px;   // avanço de seta e de item inline
+  --press: 1px;   // afundamento de botão no clique
+}

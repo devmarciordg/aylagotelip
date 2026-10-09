@@ -1,0 +1,6 @@
+THESIS: A conformidade contra incêndio apresentada com a estrutura de um ERP corporativo — jornada em fases, grade de soluções, faixa de números — recusando o site de engenheiro autônomo feito de foto de prédio e formulário solto.
+OWN-WORLD: Cinza quase preto azulado ciano #11161b como campo escuro dominante, dourado #ffd000 como única cor de ação, papel branco e #f4f6f8 nas faixas alternadas. Tipografia Archivo e Public Sans. Ícones de traço 1.5 desenhados. Cantos de 4px a 6px, réguas de 1px, sem sombra decorativa redundante.
+STORY: O visitante notificado entende que existem três fases entre ele e o AVCB, que uma única engenheira cobre as quatro etapas, e chama no WhatsApp ou envia o formulário.
+FIRST VIEWPORT: Header fixo escuro com a logo à esquerda e CTA dourado à direita. Hero em duas colunas sobre campo escuro slate-cyan: à esquerda H1 e subtítulo com dois botões; à direita o cartão de perfil técnico da engenheira. Faixa de estatísticas dourada encostada embaixo.
+FORM: Padrão da categoria, escolhido pelo usuário sobre a rolagem (chave 226d1ae4) — layout do sienge.com.br à risca com a paleta da Gotelip, distribuído nas seis páginas institucionais do CLAUDE.md.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md

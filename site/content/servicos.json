@@ -1,0 +1,168 @@
+{
+  "title": "Serviços",
+  "meta": {
+    "title": "Projetos de Incêndio, Consultoria, Brigada e INSS de Obra | Gotelip Engenharia",
+    "description": "Projetos técnicos de PPCI, regularização com AVCB, consultoria de riscos, treinamento de brigada e regularização de INSS de obra em Governador Valadares e região."
+  },
+  "blocks": {
+    "title": "Soluções em engenharia e segurança",
+    "lead": "Projetos técnicos, consultoria preventiva, formação de brigada e regularização predial com responsabilidade técnica única perante o CBMMG e o CREA-MG.",
+    "services": [
+      {
+        "slug": "projetos",
+        "icon": "blueprint",
+        "image": "/img/projetos.webp",
+        "title": "Projetos técnicos (PPCI)",
+        "lead": "Projetos de segurança contra incêndio e pânico para edificações comerciais, industriais e eventos temporários, elaborados segundo as Instruções Técnicas do Corpo de Bombeiros Militar de Minas Gerais para obtenção do AVCB.",
+        "includes": [
+          "Levantamento arquitetônico e conferência in loco das medidas da edificação",
+          "Dimensionamento de hidrantes, mangotinhos, sprinklers e extintores",
+          "Cálculo de rotas de fuga, saídas de emergência e compartimentação",
+          "Projetos de sinalização fotoluminescente e iluminação de emergência",
+          "Projetos específicos para edificações comerciais, industriais e eventos temporários",
+          "Pranchas técnicas no padrão CBMMG, memorial descritivo e ART de projeto"
+        ],
+        "when": [
+          "Construção nova, reforma, ampliação ou alteração de ocupação do imóvel",
+          "Notificação de fiscalização exigindo projeto técnico aprovado",
+          "Exigência da prefeitura para concessão ou renovação de alvará de funcionamento",
+          "Licenciamento de eventos temporários com estrutura desmontável"
+        ],
+        "note": "Projetos elaborados em conformidade com as Instruções Técnicas vigentes do Corpo de Bombeiros Militar de Minas Gerais.",
+        "meta": {
+          "title": "Projetos técnicos (PPCI) | Gotelip Engenharia",
+          "description": "Desenvolvimento de projetos completos de segurança contra incêndio e pânico para edificações em geral e eventos temporários, em total conformidade com…"
+        }
+      },
+      {
+        "slug": "consultoria",
+        "icon": "target",
+        "image": "/img/consultoria.webp",
+        "title": "Consultoria de riscos e laudos periciais",
+        "lead": "Vistorias no local para identificar itens fora de norma, responder a notificações do Corpo de Bombeiros e fundamentar adequações com laudo técnico e ART.",
+        "includes": [
+          "Auditoria diagnóstica presencial de extintores, hidrantes e saídas de emergência",
+          "Relatório técnico fotográfico com apontamento de não conformidades",
+          "Elaboração de laudo de conformidade com Anotação de Responsabilidade Técnica",
+          "Defesa técnica e resposta formal a notificações e autos do CBMMG",
+          "Acompanhamento presencial da vistoria dos bombeiros militares"
+        ],
+        "when": [
+          "Recebimento de notificação ou auto de infração com prazo de regularização",
+          "Exigência de parecer técnico por seguradoras ou franqueadoras",
+          "Avaliação de imóveis antes de compra, venda ou assinatura de locação",
+          "Dúvidas sobre a validade e conformidade dos sistemas instalados"
+        ],
+        "note": "A vistoria prévia identifica correções necessárias antes da fiscalização militar, evitando autuações e interrupções no funcionamento da empresa.",
+        "meta": {
+          "title": "Consultoria de riscos e laudos periciais | Gotelip Engenharia",
+          "description": "Auditorias detalhadas e vistorias preventivas para identificar vulnerabilidades, diagnosticar não conformidades e fundamentar soluções de segurança com…"
+        }
+      },
+      {
+        "slug": "brigada",
+        "icon": "shield",
+        "image": "/img/brigada.webp",
+        "title": "Treinamento de brigada de incêndio",
+        "lead": "Instrução prática e teórica para formação e reciclagem de brigada de emergência, conforme as exigências da IT 12 do Corpo de Bombeiros.",
+        "includes": [
+          "Instrução teórica sobre classes de incêndio e métodos de extinção",
+          "Treinamento prático de operação de extintores portáteis e mangueiras de hidrante",
+          "Fundamentos de primeiros socorros e atendimento inicial de emergência",
+          "Simulado prático de abandono e evacuação coordenada da edificação",
+          "Emissão do atestado de brigada e certificados individuais de conclusão"
+        ],
+        "when": [
+          "Exigência da legislação estadual para protocolo e renovação do AVCB",
+          "Formação inicial de brigadistas em novas empresas, galpões e condomínios",
+          "Reciclagem anual periódica da equipe de emergência interna",
+          "Adequação às normas regulamentadoras de segurança do trabalho"
+        ],
+        "note": "O atestado de formação de brigada com ART é documento obrigatório para concessão e renovação do AVCB.",
+        "meta": {
+          "title": "Treinamento de brigada de incêndio | Gotelip Engenharia",
+          "description": "Capacitação prática e teórica de brigadistas para agir com rapidez e eficiência em situações de emergência, seguindo rigorosamente as normas técnicas…"
+        }
+      },
+      {
+        "slug": "inss",
+        "icon": "scale",
+        "image": "/img/inss.webp",
+        "title": "INSS de obra e regularização tributária",
+        "lead": "Consultoria técnica para regularização de obras civis na Receita Federal, aplicação de deduções legais e emissão da Certidão Negativa de Débitos (CND).",
+        "includes": [
+          "Diagnóstico tributário detalhado da edificação e levantamento documental",
+          "Análise de notas fiscais de materiais, contratos de empreitada e folha de pagamento",
+          "Tramitação completa no SERO (Serviço Eletrônico de Regularização de Obras)",
+          "Aplicação de benefícios legais e reconhecimento de prazos de decadência",
+          "Emissão da Certidão Negativa de Débitos (CND) perante a Receita Federal"
+        ],
+        "when": [
+          "Conclusão de obra para averbação do habite-se no Cartório de Registro de Imóveis",
+          "Notificação ou cobrança preliminar emitida pela Receita Federal",
+          "Necessidade de obtenção da CND para financiamento imobiliário ou venda",
+          "Prevenção contra autuações tributárias, juros de mora e bloqueio de CPF ou CNPJ"
+        ],
+        "note": "A apuração via SERO com análise prévia de documentos permite calcular as deduções cabíveis antes do envio à Receita Federal.",
+        "meta": {
+          "title": "INSS de obra e regularização tributária | Gotelip Engenharia",
+          "description": "Consultoria especializada para regularização de construções junto à Receita Federal, redução legal do valor da contribuição previdenciária e emissão da…"
+        }
+      },
+      {
+        "slug": "eventos",
+        "icon": "pin",
+        "image": "/img/eventos.webp",
+        "title": "Eventos temporários",
+        "lead": "Projeto e regularização de segurança contra incêndio e pânico para eventos temporários — feiras, shows, rodeios, corridas e festas — com estruturas desmontáveis, conforme as Instruções Técnicas do Corpo de Bombeiros Militar de Minas Gerais.",
+        "includes": [
+          "Levantamento do layout do evento: setores, palcos, arquibancadas e tendas",
+          "Dimensionamento de extintores, sinalização e iluminação de emergência",
+          "Cálculo de lotação, rotas de fuga e saídas de emergência do público",
+          "Análise de riscos específicos: queima de fogos, fogueiras, GLP e geradores",
+          "Plano de controle de entrada, delimitação por barreiras e acessibilidade",
+          "Memorial descritivo, pranchas no padrão CBMMG e ART de projeto"
+        ],
+        "when": [
+          "Feira, show, rodeio, corrida, passeata ou festa com público concentrado",
+          "Montagem de estruturas provisórias: palco, arquibancada, tenda ou camarote",
+          "Exigência do Corpo de Bombeiros ou da prefeitura para liberação do evento",
+          "Evento em edificação já regularizada, mas com ocupação acima da prevista"
+        ],
+        "note": "O prazo de análise do Corpo de Bombeiros exige protocolo com antecedência: procure a engenharia assim que a data do evento estiver definida.",
+        "meta": {
+          "title": "Segurança contra incêndio para eventos temporários | Gotelip Engenharia",
+          "description": "Projeto e regularização de eventos temporários em Minas Gerais: feiras, shows, rodeios e corridas, com dimensionamento e ART conforme as Instruções Técnicas do CBMMG."
+        }
+      },
+      {
+        "slug": "avaliacao-imoveis",
+        "icon": "building",
+        "title": "Avaliação técnica de imóveis",
+        "lead": "Vistoria de conformidade dos sistemas de segurança contra incêndio para compra, venda, locação e due diligence patrimonial, com laudo técnico e ART.",
+        "includes": [
+          "Vistoria presencial de extintores, hidrantes, sinalização e iluminação de emergência",
+          "Conferência da situação do imóvel perante o CBMMG (AVCB/CLCB vigente ou vencido)",
+          "Laudo técnico com registro fotográfico e relação de não conformidades identificadas",
+          "Estimativa de custo e prazo para regularização completa do imóvel",
+          "Relatório executivo com Anotação de Responsabilidade Técnica"
+        ],
+        "when": [
+          "Compra ou venda de imóvel comercial, industrial ou residencial multifamiliar",
+          "Assinatura ou renovação de contrato de locação com due diligence",
+          "Obtenção de financiamento imobiliário com exigência de laudo técnico",
+          "Renovação de seguro predial ou auditoria por parte da seguradora"
+        ],
+        "note": "A avaliação identifica passivos ocultos de regularização perante o CBMMG antes de qualquer transação imobiliária, protegendo comprador e vendedor.",
+        "meta": {
+          "title": "Avaliação técnica de imóveis | Gotelip Engenharia",
+          "description": "Vistoria de conformidade dos sistemas de segurança contra incêndio para compra, venda, locação e due diligence — laudo técnico com ART em Governador Valadares e região."
+        }
+      }
+    ],
+    "extrasTitle": "Soluções complementares",
+    "extrasIntro": "Serviços técnicos e laudos especializados para proteção patrimonial, conformidade sanitária e acessibilidade. Escolha o que você precisa e o orçamento já abre com o item marcado.",
+    "ctaTitle": "Precisa de orientação técnica sobre a sua edificação?",
+    "ctaText": "Informe a área aproximada e a atividade exercida no local para receber uma estimativa de escopo e cronograma."
+  }
+}

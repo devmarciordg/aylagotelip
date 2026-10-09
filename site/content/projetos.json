@@ -1,0 +1,125 @@
+{
+  "title": "Projetos",
+  "meta": {
+    "title": "Projetos e Regularizações Técnicas | Gotelip Engenharia",
+    "description": "Portfólio de projetos técnicos de incêndio, consultorias de risco, treinamentos de brigada e regularizações da Gotelip Engenharia em Governador Valadares e região."
+  },
+  "blocks": {
+    "title": "Trabalhos realizados",
+    "lead": "Projetos técnicos aprovados no CBMMG, auditorias de conformidade, treinamentos de brigada e processos de regularização executados no Leste de Minas Gerais.",
+    "slots": [
+      {
+        "slug": "ppci",
+        "photo": "/img/projetos.webp",
+        "title": "Projetos técnicos (PPCI)",
+        "category": "Projeto Técnico · CBMMG",
+        "badge": "Aprovação Militar",
+        "meta": "Governador Valadares, MG · Dimensionamento e aprovação no CBMMG",
+        "description": "Elaboração do Projeto de Prevenção e Combate a Incêndio e Pânico (PPCI) para comércios, indústrias, galpões e condomínios. O trabalho inclui dimensionamento de rotas de fuga, cálculo de carga de incêndio, compartimentação, saídas de emergência, iluminação autônoma e rede de hidrantes, com protocolo e acompanhamento no Infoscip até a aprovação pelo Corpo de Bombeiros.",
+        "deliverables": [
+          "Pranchas técnicas com plantas baixas, cortes e detalhes no padrão CBMMG",
+          "Memorial descritivo e memória de cálculo de carga de incêndio",
+          "Dimensionamento de saídas de emergência, rotas de fuga e iluminação autônoma",
+          "Cálculo hidráulico e isométrico para rede pressurizada de hidrantes",
+          "Emissão da Anotação de Responsabilidade Técnica (ART) no CREA-MG",
+          "Protocolo e acompanhamento até aprovação no sistema Infoscip do CBMMG"
+        ],
+        "standards": "Instruções Técnicas IT 01, IT 08, IT 16, IT 17 e IT 18 do CBMMG; NBR 13714 e NBR 9077.",
+        "featured": true
+      },
+      {
+        "slug": "laudo-pericial",
+        "photo": "/img/consultoria.webp",
+        "title": "Auditoria de riscos e laudo pericial",
+        "category": "Consultoria & Laudos",
+        "badge": "ART Registrada",
+        "meta": "Governador Valadares, MG · Vistoria diagnóstica com ART",
+        "description": "Vistoria presencial no imóvel para conferir a situação das instalações de segurança e levantar itens em desacordo com as normas do CBMMG. Indicado para empresas notificadas pela fiscalização ou que precisam de laudo técnico com ART para alvarás e seguros.",
+        "deliverables": [
+          "Vistoria diagnóstica presencial completa com registro fotográfico técnico",
+          "Mapeamento detalhado de inconformidades com classificação por prioridade de risco",
+          "Elaboração de plano de ação corretivo economicamente viável",
+          "Emissão de Laudo Técnico Pericial fundamentado com ART registrada no CREA-MG",
+          "Assessoria técnica especializada para atendimento a exigências de fiscalização"
+        ],
+        "standards": "Lei Estadual nº 14.130/2001, Decreto Estadual nº 47.998/2020 e Instruções Técnicas do CBMMG.",
+        "featured": true
+      },
+      {
+        "slug": "brigada-incendio",
+        "photo": "/img/brigada.webp",
+        "title": "Treinamento de brigada de incêndio",
+        "category": "Capacitação & Treinamento",
+        "badge": "Certificação Oficial",
+        "meta": "Governador Valadares, MG · Instrução prática de combate e primeiros socorros",
+        "description": "Formação e reciclagem de brigada de emergência para empresas, condomínios e escolas. O curso ensina a combater princípios de incêndio com extintores e hidrantes, prestar primeiros socorros e coordenar a evacuação do prédio em caso de emergência.",
+        "deliverables": [
+          "Módulo teórico: triângulo do fogo, classes de incêndio e métodos de extinção",
+          "Instrução prática com fogo: manuseio correto de extintores de água, pó químico e CO2",
+          "Operação de rede de hidrantes, acoplamento de mangueiras e regulagem de esguichos",
+          "Primeiros socorros: desobstrução de vias aéreas, RCP, contenção de hemorragias e imobilização",
+          "Simulado de evacuação de emergência e emissão do Atestado de Formação de Brigada"
+        ],
+        "standards": "Instrução Técnica IT 12 do CBMMG e norma NBR 14276 (Brigada de Emergência).",
+        "featured": true
+      },
+      {
+        "slug": "regularizacao-cnd",
+        "photo": "/img/inss.webp",
+        "title": "Regularização de obras e CND",
+        "category": "Gestão Tributária de Obras",
+        "badge": "Redução Legal SERO",
+        "meta": "Leste de Minas Gerais · Redução legal de encargos via SERO",
+        "description": "Consultoria técnica para regularização de obras civis na Receita Federal e prefeituras. A partir da conferência de contratos, notas fiscais e prazos de decadência, calculamos as deduções permitidas pela legislação para apurar o valor correto da contribuição e emitir a Certidão Negativa de Débitos (CND).",
+        "deliverables": [
+          "Auditoria técnica documental: habite-se, alvará, contratos e notas fiscais",
+          "Enquadramento no Serviço Eletrônico de Aferição de Obras (SERO) da Receita Federal",
+          "Análise jurídica e contábil de decadência tributária e créditos de materiais e serviços",
+          "Redução lícita do valor final da contribuição previdenciária da construção civil",
+          "Emissão da CND de Obra e suporte para averbação no Cartório de Registro de Imóveis"
+        ],
+        "standards": "Instrução Normativa RFB nº 2021/2021 e legislação tributária federal aplicável à construção civil.",
+        "featured": false
+      },
+      {
+        "slug": "combate-incendio",
+        "photo": "/img/step-img-3.webp",
+        "title": "Sistemas de combate a princípio de incêndio",
+        "category": "Proteção Ativa",
+        "badge": "Adequação Técnica",
+        "meta": "Governador Valadares, MG · Adequação de extintores e rede de hidrantes",
+        "description": "Inspeção e teste de extintores, hidrantes, mangueiras, esguichos e bombas de pressurização em galpões, indústrias e edifícios, conferindo o funcionamento dos equipamentos segundo as normas do Corpo de Bombeiros.",
+        "deliverables": [
+          "Inspeção e redistribuição de extintores para cumprimento dos raios máximos de caminhamento",
+          "Verificação de prazos de validade das cargas e ensaios hidrostáticos dos cilindros",
+          "Revisão da rede hidráulica de hidrantes, válvulas de retenção e registros de recalque",
+          "Teste prático de vazão, pressão estática e estanqueidade com manômetro aferido",
+          "Emissão da ART de instalação e comissionamento dos sistemas hidráulicos de combate"
+        ],
+        "standards": "Instruções Técnicas IT 16 (Extintores) e IT 17 (Hidrantes) do CBMMG; NBR 12693 e NBR 13714.",
+        "featured": false
+      },
+      {
+        "slug": "sinalizacao-emergencia",
+        "photo": "/img/step-img-1.webp",
+        "title": "Detecção e sinalização fotoluminescente",
+        "category": "Proteção Passiva",
+        "badge": "Conformidade ABNT",
+        "meta": "Governador Valadares, MG · Rotas de fuga e iluminação de emergência",
+        "description": "Instalação de placas fotoluminescentes, blocos autônomos de iluminação e demarcação de rotas de fuga, orientando a saída segura da edificação em situações de falta de luz ou fumaça.",
+        "deliverables": [
+          "Mapeamento de rotas de fuga com placas de saída, orientação de sentido e desníveis",
+          "Identificação fotoluminescente dos equipamentos de combate (extintores, hidrantes e alarmes)",
+          "Dimensionamento e instalação de blocos de iluminação autônomos com autonomia mínima de 2 horas",
+          "Verificação da desobstrução de corredores, escadas enclausuradas e portas corta-fogo",
+          "Atestado de conformidade técnica da sinalização para apresentação na vistoria militar"
+        ],
+        "standards": "Instruções Técnicas IT 13 e IT 15 do CBMMG; NBR 13434 e NBR 10898.",
+        "featured": false
+      }
+    ],
+    "note": "Os registros ilustram as principais tipologias atendidas pelo escritório: estabelecimentos comerciais, edificações industriais, galpões de armazenagem, condomínios e eventos temporários.",
+    "ctaTitle": "Precisa regularizar uma edificação na sua empresa?",
+    "ctaText": "Informe a área aproximada e a atividade exercida para receber uma proposta técnica detalhada e personalizada."
+  }
+}

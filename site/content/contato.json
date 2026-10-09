@@ -1,0 +1,24 @@
+{
+  "title": "Contato",
+  "meta": {
+    "title": "Contato | Gotelip Engenharia | Governador Valadares, MG",
+    "description": "Telefone, WhatsApp, e-mail e endereço da Gotelip Engenharia. Solicite orçamento para projeto de incêndio, AVCB, laudos ou execução."
+  },
+  "blocks": {
+    "title": "Contato",
+    "lead": "Atendimento com agendamento prévio em Governador Valadares e região. Para situações com prazo de notificação em andamento, o contato por WhatsApp é o canal mais direto.",
+    "contact": {
+      "phone": "+55 33 99145-6937",
+      "phoneDigits": "553391456937",
+      "email": "aylagotelip.eng@gmail.com",
+      "address": "Rua Crisolino Ferreira da Costa, 145, Castanheiras",
+      "city": "Governador Valadares",
+      "state": "MG",
+      "zip": "35054-767",
+      "cnpj": "59.763.852/0001-83",
+      "hours": "Atendimento com agendamento prévio",
+      "crea": "CREA-MG 214049/D",
+      "footerText": "Engenharia especializada em projetos de combate a incêndio (PPCI), regularização predial e obtenção de AVCB junto ao CBMMG."
+    }
+  }
+}

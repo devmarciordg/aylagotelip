@@ -1,0 +1,92 @@
+{
+  "title": "Blog",
+  "meta": {
+    "title": "Artigos e Legislação contra Incêndio | Gotelip Engenharia",
+    "description": "Orientações práticas sobre AVCB, projetos de combate a incêndio (PPCI) e exigências do Corpo de Bombeiros Militar de Minas Gerais."
+  },
+  "blocks": {
+    "title": "Orientações técnicas",
+    "lead": "Artigos práticos sobre normas de segurança contra incêndio, procedimentos do CBMMG e passos para a regularização predial.",
+    "posts": [
+      {
+        "slug": "notificacao-corpo-de-bombeiros-o-que-fazer",
+        "title": "Recebi uma notificação do Corpo de Bombeiros: o que fazer agora",
+        "excerpt": "O prazo começa a correr na data de entrega registrada no documento. Conheça as providências iniciais e como evitar autuações.",
+        "date": "2026-09-08",
+        "dateLabel": "8 de setembro de 2026",
+        "readTime": "7 min de leitura",
+        "tag": "Regularização",
+        "meta": {
+          "title": "Notificação do Corpo de Bombeiros: passo a passo | Gotelip Engenharia",
+          "description": "O que fazer ao receber uma notificação do CBMMG: prazos, documentos exigidos, ordem correta das providências e os erros mais comuns na resposta."
+        },
+        "body": "<p>A notificação do Corpo de Bombeiros Militar de Minas Gerais aponta divergências entre o imóvel e as Instruções Técnicas vigentes, estabelecendo um prazo para regularização. A autuação, a multa ou a interdição acontecem quando o prazo vence sem resposta formal do responsável.</p><h2>1. Verifique a data de recebimento do documento</h2><p>O prazo corre a partir da data de entrega anotada no comprovante. Em muitos casos o documento é recebido na portaria ou recepção e só chega ao administrador dias depois. A primeira providência é checar a data exata para calcular os dias úteis restantes.</p><h2>2. Separe as exigências por natureza</h2><p>A notificação enumera os itens que precisam de adequação. Na prática, as exigências costumam se dividir em três categorias:</p><ul><li><strong>Documentais:</strong> ausência de projeto aprovado (PPCI), AVCB vencido ou ART pendente. A regularização ocorre por meio de protocolo administrativo no INFOCIP.</li><li><strong>Operacionais:</strong> extintores com carga vencida, ausência de placas, luminárias de emergência inoperantes ou passagens obstruídas. Exigem correções físicas diretas no imóvel.</li><li><strong>Estruturais:</strong> largura insuficiente de saídas, ausência de rede de hidrantes ou compartimentação inadequada. Demandam projeto técnico e prazo maior para execução.</li></ul><p>Separar as demandas ajuda a planejar o cronograma. As questões documentais e operacionais costumam ser sanadas com rapidez, enquanto as estruturais demandam obras planejadas.</p><h2>3. Solicite prorrogação de prazo antes do vencimento</h2><p>Quando há necessidade de obras ou cálculos complexos, o pedido de prorrogação precisa ser protocolado antes do término do prazo inicial. A solicitação deve vir acompanhada de justificativa técnica e de um cronograma claro de adequações.</p><aside class=\"callout\"><p>Um cronograma assinado por engenheiro habilitado, com ART registrada no CREA, dá sustentação formal ao pedido de dilação junto à corporação militar.</p></aside><h2>4. Responda a todos os itens apontados</h2><p>Responder apenas a uma parte da notificação e deixar o restante pendente gera uma segunda vistoria que reconfirma as falhas, agora com registro de descumprimento. O protocolo de resposta deve contemplar todos os pontos levantados: comprovando o que já foi ajustado e anexando o cronograma dos itens em andamento.</p><h2>5. Documentos necessários para a instrução do processo</h2><ol><li>Cópia legível da notificação recebida;</li><li>Projeto técnico de combate a incêndio (PPCI) aprovado ou número do protocolo de análise;</li><li>ART do responsável técnico pelo projeto e pela execução;</li><li>Notas fiscais e certificados dos equipamentos adquiridos (extintores, mangueiras, luminárias);</li><li>Relatório fotográfico das instalações concluídas;</li><li>Cronograma físico das etapas seguintes.</li></ol><h2>Cuidado com compras antes do projeto</h2><p>Comprar ou instalar equipamentos sem projeto aprovado gera custos duplicados. Se a empresa adquire extintores e luminárias por conta própria antes da análise técnica, corre o risco de instalar modelos incompatíveis com a carga de incêndio ou em posições fora de norma. A elaboração do projeto antecede a aquisição dos materiais.</p>"
+      },
+      {
+        "slug": "diferenca-entre-ppci-avcb-e-art",
+        "title": "PPCI, AVCB e ART: qual é a diferença na prática",
+        "excerpt": "Três documentos complementares com funções distintas: o projeto técnico, a licença do imóvel e o registro de responsabilidade profissional.",
+        "date": "2026-09-08",
+        "dateLabel": "8 de setembro de 2026",
+        "readTime": "5 min de leitura",
+        "tag": "Fundamentos",
+        "meta": {
+          "title": "PPCI, AVCB e ART: diferenças na prática | Gotelip Engenharia",
+          "description": "O que é o PPCI, o que é o AVCB e o que é a ART: a função de cada documento, a ordem em que são obtidos e por que um não substitui o outro."
+        },
+        "body": "<p>PPCI, AVCB e ART são documentos complementares em um processo de regularização, mas desempenham funções distintas.</p><h2>1. PPCI (Projeto Técnico)</h2><p>O Projeto de Prevenção e Combate a Incêndio dimensiona as medidas de segurança do imóvel, como quantidade e localização de extintores, largura de saídas, necessidade de hidrantes e compartimentação. Os cálculos consideram a área construída, a altura e a ocupação da edificação. Um restaurante e um galpão de armazenagem com a mesma metragem têm exigências diferentes. A aprovação do PPCI pelo Corpo de Bombeiros autoriza o início das instalações físicas.</p><h2>2. AVCB (Auto de Vistoria)</h2><p>O Auto de Vistoria do Corpo de Bombeiros é emitido após a vistoria militar constatar que as instalações foram executadas conforme o projeto aprovado. O documento comprova a regularidade da edificação perante prefeituras e seguradoras, possuindo prazo de validade determinado.</p><h2>3. ART (Responsabilidade Técnica)</h2><p>A Anotação de Responsabilidade Técnica é o registro emitido no CREA que vincula o engenheiro responsável ao serviço executado, garantindo respaldo técnico perante os órgãos de fiscalização.</p><h2>A sequência do processo</h2><ol><li>Levantamento físico do imóvel: medições, ocupação e área construída;</li><li>Elaboração do PPCI com ART de projeto registrada;</li><li>Protocolo e análise técnica no sistema INFOCIP do CBMMG;</li><li>Instalação dos equipamentos conforme pranchas aprovadas;</li><li>Solicitação da vistoria do Corpo de Bombeiros;</li><li>Emissão do certificado do AVCB;</li><li>Controle de prazos para renovação periódica.</li></ol><aside class=\"callout\"><p>Cada documento cumpre uma etapa do processo. O PPCI planeja os sistemas, a execução instala os equipamentos e a vistoria final resulta na emissão do AVCB.</p></aside>"
+      },
+      {
+        "slug": "quanto-custa-regularizar-um-imovel-comercial",
+        "title": "O que define o custo de regularização de um imóvel comercial",
+        "excerpt": "A área construída é apenas uma das variáveis. A atividade exercida, a altura do prédio e o estado das instalações determinam as exigências normativas.",
+        "date": "2026-09-08",
+        "dateLabel": "8 de setembro de 2026",
+        "readTime": "6 min de leitura",
+        "tag": "Custos",
+        "meta": {
+          "title": "Custo de regularização de imóvel comercial | Gotelip Engenharia",
+          "description": "Os fatores que determinam o custo de regularização junto ao CBMMG: ocupação, altura, área, estado da edificação e o peso real de cada um deles."
+        },
+        "body": "<p>O custo de regularização de um imóvel comercial depende de um conjunto de critérios técnicos estabelecidos pela legislação mineira. Dois imóveis com a mesma metragem podem ter custos muito distintos devido a quatro fatores principais:</p><h2>1. Atividade exercida (Ocupação)</h2><p>A legislação classifica as edificações de acordo com o uso. A carga de incêndio e a quantidade de pessoas presentes determinam se o local precisa de medidas básicas, como extintores e sinalização, ou de sistemas pressurizados de combate.</p><h2>2. Altura da edificação</h2><p>Prédios com múltiplos pavimentos demandam medidas adicionais de proteção, como escadas enclausuradas, iluminação de emergência centralizada e reserva técnica de água com moto-bombas.</p><h2>3. Situação atual das instalações</h2><ul><li><strong>Documentação pendente:</strong> imóvel com instalações adequadas necessitando apenas de projeto, protocolo e vistoria militar.</li><li><strong>Substituição de itens:</strong> recarga de extintores, substituição de luminárias autônomas ou troca de placas desgastadas.</li><li><strong>Instalações hidráulicas:</strong> montagem de tubulação, registros de recalque e abrigos de mangueiras.</li><li><strong>Adequações civis:</strong> alargamento de passagens, inversão de sentido de abertura de portas ou instalação de portas corta-fogo.</li></ul><h2>4. Prazos de fiscalização</h2><p>Regularizar preventivamente permite cotar materiais e mão de obra com calma. Quando há auto de fiscalização com prazo curto, a urgência costuma elevar os custos operacionais.</p><aside class=\"callout\"><p>Uma proposta técnica formal discrimina os custos por etapas: levantamento, elaboração do projeto, taxas estaduais do CBMMG e instalação de equipamentos.</p></aside>"
+      },
+      {
+        "slug": "motivos-de-reprovacao-em-vistoria-do-cbmmg",
+        "title": "Os motivos mais frequentes de reprovação em vistoria do CBMMG",
+        "excerpt": "As reprovações em vistorias do Corpo de Bombeiros costumam ocorrer por divergências entre a planta aprovada e o que foi instalado no imóvel.",
+        "date": "2026-09-08",
+        "dateLabel": "8 de setembro de 2026",
+        "readTime": "6 min de leitura",
+        "tag": "Vistoria",
+        "meta": {
+          "title": "Motivos de reprovação em vistoria do CBMMG | Gotelip Engenharia",
+          "description": "Os apontamentos que mais reprovam vistorias do Corpo de Bombeiros: divergências de execução, documentação incompleta e falhas de manutenção."
+        },
+        "body": "<p>A reprovação em vistoria do Corpo de Bombeiros atrasa a liberação do alvará e exige o agendamento de um novo exame. As causas mais frequentes estão ligadas a divergências práticas entre o projeto aprovado e a execução no local.</p><h2>Divergências entre projeto e instalação</h2><ul><li>Extintores fixados em altura ou local diferente do previsto em planta;</li><li>Quantidade de equipamentos inferior ao especificado;</li><li>Tipos de extintores incompatíveis com a classe de risco do ambiente;</li><li>Sinalização instalada fora das rotas aprovadas no projeto.</li></ul><h2>Rotas de fuga e saídas</h2><p>A rota de fuga precisa permanecer livre e desimpedida durante todo o horário de funcionamento do estabelecimento:</p><ul><li>Corredores ou portas de emergência bloqueados por caixas, paletes ou móveis;</li><li>Portas corta-fogo travadas abertas com calços;</li><li>Trincos ou cadeados trancando saídas de emergência;</li><li>Portas abrindo no sentido contrário ao fluxo de saída de público.</li></ul><h2>Manutenção de equipamentos</h2><ul><li>Extintores com manômetro despressurizado ou carga vencida;</li><li>Blocos de iluminação autônoma com baterias descarregadas;</li><li>Abrigos de hidrantes incompletos, sem mangueira, esguicho ou chave de engate;</li><li>Central de alarme desligada da alimentação elétrica.</li></ul><h2>Documentação na data da inspeção</h2><p>A vistoria também é documental. A falta de ART de instalação, certificados de calibração ou comprovantes de manutenção pode reprovar a edificação mesmo que os equipamentos estejam fixados na parede.</p><aside class=\"callout\"><p>Realizar uma vistoria prévia com a planta aprovada em mãos antes de solicitar a inspeção dos bombeiros permite corrigir pendências simples e garantir a aprovação na primeira visita.</p></aside>"
+      },
+      {
+        "slug": "consequencias-de-operar-com-avcb-vencido",
+        "title": "Operar com o AVCB vencido: quais são as consequências reais",
+        "excerpt": "Operar sem AVCB válido compromete a regularidade do alvará de funcionamento, pode invalidar coberturas de seguros patrimoniais e gera autuações.",
+        "date": "2026-09-08",
+        "dateLabel": "8 de setembro de 2026",
+        "readTime": "5 min de leitura",
+        "tag": "Conformidade",
+        "meta": {
+          "title": "Consequências de operar com AVCB vencido | Gotelip Engenharia",
+          "description": "O que está em risco ao operar com o AVCB vencido: fiscalização, cobertura securitária, alvará de funcionamento e responsabilidade civil."
+        },
+        "body": "<p>Manter o Auto de Vistoria do Corpo de Bombeiros em dia é requisito obrigatório para o funcionamento legal de estabelecimentos comerciais, industriais e condomínios. A operação com o documento vencido acarreta riscos operacionais e jurídicos diretos.</p><h2>Fiscalização militar e penalidades</h2><p>A fiscalização do CBMMG pode lavrar notificações, aplicar multas progressivas e, em casos de risco à vida ou falta grave de segurança, interditar o estabelecimento.</p><h2>Seguros patrimoniais</h2><p>As apólices de seguro contra incêndio exigem que a edificação esteja regular perante as autoridades competentes. A ausência de AVCB válido dá margem para seguradoras recusarem ou reduzirem o pagamento de indenizações em sinistros.</p><h2>Alvará municipal de funcionamento</h2><p>As prefeituras exigem o AVCB vigente para a emissão e a renovação de alvarás comerciais e industriais. A pendência com os bombeiros impede a regularização cadastral do negócio.</p><h2>Responsabilidade legal</h2><p>Em eventuais emergências, a falta do documento oficial atestando as condições de segurança pode configurar negligência do responsável pelo imóvel ou gestor da empresa.</p><aside class=\"callout\"><p>A renovação periódica é mais simples quando os equipamentos recebem manutenção regular. O processo envolve conferência das cargas dos extintores, teste das luminárias autônomas e protocolo com ART de renovação.</p></aside><h2>Providências para regularização</h2><ol><li>Localize o projeto aprovado e o último certificado emitido;</li><li>Verifique se houve ampliações de área, alterações de layout ou mudanças de atividade;</li><li>Faça a revisão geral dos extintores, hidrantes e iluminação de emergência;</li><li>Solicite a vistoria de renovação com emissão de ART por engenheiro habilitado.</li></ol>"
+      }
+    ],
+    "emptyTitle": "Artigos em preparação",
+    "emptyText": "Os artigos são redigidos com base nas dúvidas mais frequentes recebidas pelo escritório. Temas previstos para publicação:",
+    "planned": [
+      "Passo a passo após receber uma notificação do Corpo de Bombeiros",
+      "Diferenças práticas entre PPCI, AVCB e ART",
+      "Fatores que influenciam o custo de regularização de um imóvel comercial",
+      "Principais motivos de reprovação em vistorias do CBMMG",
+      "Consequências legais de operar com o AVCB vencido"
+    ]
+  }
+}

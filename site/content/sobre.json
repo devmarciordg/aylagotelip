@@ -1,0 +1,124 @@
+{
+  "title": "Sobre",
+  "meta": {
+    "title": "Sobre a Gotelip Engenharia | Ayla Gotelip, engenheira responsável",
+    "description": "Engenharia de segurança contra incêndio em Governador Valadares. Projetos técnicos de PPCI, regularização com AVCB, laudos e assessoria com responsabilidade técnica única."
+  },
+  "blocks": {
+    "title": "A engenheira responsável",
+    "lead": "Escritório de engenharia civil voltado para projetos de prevenção contra incêndio, regularização de imóveis e obtenção de alvarás em Governador Valadares e cidades vizinhas.",
+    "portraitSlot": "/img/ayla-pose.webp",
+    "bioTitle": "Ayla Gotelip",
+    "bio": [
+      "A Gotelip Engenharia presta serviços técnicos de combate a incêndio para comércios, indústrias e condomínios em Governador Valadares e região, com registro no CREA-MG e habilitação no sistema do Corpo de Bombeiros.",
+      "O atendimento acompanha cada etapa do processo: visita técnica ao imóvel, elaboração das pranchas e memoriais, protocolo no Infoscip e acompanhamento presencial na vistoria militar.",
+      "Os projetos seguem as Instruções Técnicas de Minas Gerais para evitar exigências desnecessárias ou reprovações que atrasem a liberação do alvará de funcionamento."
+    ],
+    "registros": [
+      {
+        "label": "Responsável técnica",
+        "value": "Ayla Gotelip"
+      },
+      {
+        "label": "Registro CREA",
+        "value": "Engenheira Civil · CREA-MG 214049/D"
+      },
+      {
+        "label": "Cadastro CBMMG",
+        "value": "Habilitada no Infoscip"
+      },
+      {
+        "label": "CNPJ",
+        "value": "59.763.852/0001-83"
+      },
+      {
+        "label": "Atuação",
+        "value": "Governador Valadares e região, MG"
+      }
+    ],
+    "commitment": {
+      "title": "Critério técnico e acompanhamento direto",
+      "paragraphs": [
+        "Cada imóvel tem exigências próprias conforme a área, a altura e a atividade exercida. O trabalho começa pela leitura cuidadosa da edificação para dimensionar apenas o que a legislação exige, sem custos excedentes nem equipamentos fora de norma.",
+        "O cliente trata diretamente com a engenheira em todas as fases, desde o orçamento inicial até a entrega do AVCB aprovado."
+      ],
+      "image": "/img/ayla-pc.webp"
+    },
+    "mvvTitle": "Diretrizes de trabalho",
+    "mvv": [
+      {
+        "icon": "target",
+        "title": "Missão",
+        "text": "Projetar e regularizar edificações com clareza técnica e respeito ao prazo do cliente."
+      },
+      {
+        "icon": "eye",
+        "title": "Visão",
+        "text": "Engenharia reconhecida no Leste Mineiro pela precisão técnica e pelo cumprimento das normas do CBMMG."
+      },
+      {
+        "icon": "scale",
+        "title": "Valores",
+        "items": [
+          "ART registrada no CREA em cada serviço prestado.",
+          "Orçamento detalhado por itens antes de começar.",
+          "Comunicação direta sobre o que a fiscalização exige.",
+          "Dimensionamento conforme as Instruções Técnicas do CBMMG."
+        ]
+      }
+    ],
+    "accreditations": {
+      "title": "Registros profissionais e cadastros técnicos",
+      "intro": "Habilitação formal para emitir laudos, assinar projetos e representar clientes perante os órgãos de fiscalização.",
+      "items": [
+        {
+          "logo": "/img/brasao-bombeiros.webp",
+          "name": "Corpo de Bombeiros Militar de Minas Gerais (CBMMG)",
+          "desc": "Cadastro técnico regularizado no Infoscip para elaboração e tramitação de PPCI, realização de vistorias e emissão de AVCB e CLCB."
+        },
+        {
+          "logo": "/img/crea-mg.webp",
+          "name": "Conselho Regional de Engenharia e Agronomia (CREA-MG)",
+          "desc": "Profissional habilitada com emissão obrigatória de Anotação de Responsabilidade Técnica (ART) para projetos, laudos e acompanhamento de obras."
+        }
+      ]
+    },
+    "ctaTitle": "Quer avaliar a situação do seu imóvel?",
+    "ctaText": "Entre em contato para agendar uma visita técnica ou esclarecer dúvidas sobre os procedimentos exigidos pelo Corpo de Bombeiros.",
+    "faqTitle": "Perguntas frequentes",
+    "faq": [
+      {
+        "q": "Recebi uma notificação do Corpo de Bombeiros. Como proceder?",
+        "a": "Guarde o documento e entre em contato antes do vencimento do prazo. Com a notificação em mãos, verificamos as exigências legais e indicamos os procedimentos necessários para a regularização. A conversa inicial não tem custo."
+      },
+      {
+        "q": "O que é AVCB e qual a sua finalidade?",
+        "a": "O Auto de Vistoria do Corpo de Bombeiros (AVCB) é o documento emitido pelo CBMMG atestando que a edificação possui as condições de segurança contra incêndio exigidas por lei. As prefeituras solicitam esse documento para conceder ou renovar o alvará de funcionamento."
+      },
+      {
+        "q": "Qual a diferença entre PPCI e AVCB?",
+        "a": "O PPCI é o projeto técnico composto por plantas e memoriais que definem os equipamentos necessários. O AVCB é o documento emitido após a vistoria militar, comprovando que o que foi projetado está instalado e funcionando."
+      },
+      {
+        "q": "Quanto tempo leva para sair o AVCB?",
+        "a": "O prazo varia conforme a área construída, a atividade desenvolvida e os equipamentos existentes. O tempo de elaboração e protocolo do projeto é informado na proposta. A análise técnica e a vistoria seguem a escala do Corpo de Bombeiros militar."
+      },
+      {
+        "q": "Como é calculado o orçamento?",
+        "a": "O valor depende da metragem quadrada, da classificação de risco da ocupação e dos sistemas já instalados no local. O orçamento é apresentado de forma transparente e discriminada após o levantamento inicial."
+      },
+      {
+        "q": "É obrigatório contratar todos os serviços com o mesmo profissional?",
+        "a": "Não. Cada serviço pode ser contratado separadamente. Atendemos clientes que já possuem projeto aprovado e necessitam da instalação, assim como quem precisa apenas de laudo de conformidade ou renovação."
+      },
+      {
+        "q": "O escritório atende fora de Governador Valadares?",
+        "a": "Sim. Realizamos atendimento presencial em Governador Valadares e nos municípios vizinhos do Leste de Minas Gerais. As condições de deslocamento são informadas na proposta."
+      },
+      {
+        "q": "Meu AVCB venceu. O que acontece?",
+        "a": "Operar com o AVCB vencido expõe o estabelecimento a notificações, multas e, em casos graves, interdição do imóvel. Em caso de sinistro, a cobertura de seguros também pode ser invalidada. A renovação costuma ser ágil quando os sistemas passaram por manutenções regulares."
+      }
+    ]
+  }
+}

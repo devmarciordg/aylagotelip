@@ -1,0 +1,154 @@
+{
+  "title": "Gotelip Engenharia",
+  "meta": {
+    "title": "Projeto de Incêndio, Regularização e AVCB em Governador Valadares | Gotelip Engenharia",
+    "description": "Projetos técnicos de prevenção contra incêndio (PPCI), regularização com AVCB, consultoria de riscos, brigada e INSS de obra em Governador Valadares e região."
+  },
+  "blocks": {
+    "hero": {
+      "title": "Projetos de combate a incêndio, regularização e AVCB em Governador Valadares",
+      "subtitle": "A engenheira Ayla Gotelip atua em todas as etapas do processo: elaboração do projeto técnico, protocolo no Corpo de Bombeiros e acompanhamento da instalação até a expedição do AVCB.",
+      "ctaPrimary": {
+        "label": "Falar com a engenheira",
+        "href": "https://wa.me/553391456937"
+      },
+      "ctaSecondary": {
+        "label": "Solicitar orçamento",
+        "href": "/contato/#orcamento"
+      },
+      "imageSlot": "/img/hero-mobile.webp",
+      "desktopImage": "/img/hero-desktop.webp",
+      "trust": [
+        "Adequação às normas do CBMMG",
+        "Responsabilidade técnica com ART",
+        "Atendimento em Governador Valadares e região"
+      ]
+    },
+    "stats": [
+      {
+        "icon": "stamp",
+        "value": "ART",
+        "label": "responsabilidade técnica registrada no CREA em cada serviço"
+      },
+      {
+        "icon": "pin",
+        "value": "GV e região",
+        "label": "atendimento presencial no Leste de Minas Gerais"
+      },
+      {
+        "icon": "clock",
+        "value": "Hora marcada",
+        "label": "visitas técnicas com agendamento prévio"
+      },
+      {
+        "icon": "clipboard",
+        "value": "Completo",
+        "label": "projetos, laudos periciais, brigada e regularização"
+      }
+    ],
+    "journeyTitle": "Como atuamos na sua empresa",
+    "journeyIntro": "Etapas para elaboração de projetos e regularização perante o Corpo de Bombeiros Militar:",
+    "journey": [
+      {
+        "stage": "Passo 1",
+        "title": "Diagnóstico inicial",
+        "text": "Vistoria técnica presencial para conferir a área construída, a ocupação real e as exigências da legislação mineira.",
+        "items": [
+          "Leitura detalhada de notificações",
+          "Levantamento de medidas no local",
+          "Classificação de risco da ocupação",
+          "Orçamento discriminado de custos"
+        ]
+      },
+      {
+        "stage": "Passo 2",
+        "title": "Planejamento técnico",
+        "text": "Elaboração do Projeto Técnico (PPCI), cálculo de carga de incêndio, emissão da ART e protocolo formal junto ao CBMMG.",
+        "items": [
+          "Desenho das pranchas técnicas",
+          "Dimensionamento de rotas de fuga",
+          "Anotação de Responsabilidade Técnica",
+          "Protocolo no sistema oficial"
+        ]
+      },
+      {
+        "stage": "Passo 3",
+        "title": "Execução e adequação",
+        "text": "Instalação dos equipamentos previstos em projeto e preparação da edificação para a inspeção oficial dos bombeiros.",
+        "items": [
+          "Instalação de extintores e hidrantes",
+          "Sinalização e iluminação de emergência",
+          "Testes de funcionamento dos sistemas",
+          "Treinamento básico da equipe"
+        ]
+      },
+      {
+        "stage": "Passo 4",
+        "title": "Aprovação e entrega",
+        "text": "Acompanhamento presencial da vistoria do Corpo de Bombeiros Militar e obtenção do Auto de Vistoria (AVCB ou CLCB).",
+        "items": [
+          "Acompanhamento da vistoria militar",
+          "Resposta a apontamentos técnicos",
+          "Emissão do certificado do AVCB",
+          "Entrega do processo aprovado"
+        ]
+      },
+      {
+        "stage": "Passo 5",
+        "title": "Manutenção preventiva",
+        "text": "Acompanhamento contínuo para manter a validade das licenças em dia e garantir a segurança permanente do imóvel.",
+        "items": [
+          "Controle de datas de renovação",
+          "Vistorias periódicas de conformidade",
+          "Reciclagem de brigada de emergência",
+          "Suporte técnico para ampliações"
+        ]
+      }
+    ],
+    "servicesTitle": "Soluções em segurança contra incêndio",
+    "servicesIntro": "Atendimento para projetos técnicos completos, auditorias preventivas, formação de brigadas e regularização predial.",
+    "services": [
+      {
+        "slug": "projetos",
+        "icon": "blueprint",
+        "title": "Projetos técnicos (PPCI)",
+        "text": "Dimensionamento de saídas de emergência, rotas de fuga, iluminação, sinalização, extintores, hidrantes e alarmes, conforme as Instruções Técnicas do CBMMG.",
+        "href": "/servicos#projetos"
+      },
+      {
+        "slug": "consultoria",
+        "icon": "target",
+        "title": "Consultoria de riscos e laudos",
+        "text": "Vistorias detalhadas para identificar vulnerabilidades, elaboração de laudos com ART e atendimento a notificações do Corpo de Bombeiros.",
+        "href": "/servicos#consultoria"
+      },
+      {
+        "slug": "brigada",
+        "icon": "shield",
+        "title": "Treinamento de brigada",
+        "text": "Capacitação prática em primeiros socorros, combate a princípio de incêndio e simulados de evacuação com emissão de atestado oficial.",
+        "href": "/servicos#brigada"
+      },
+      {
+        "slug": "inss",
+        "icon": "scale",
+        "title": "INSS de obra e CND",
+        "text": "Redução legal da contribuição previdenciária da construção, regularização perante a Receita Federal e emissão da CND da obra.",
+        "href": "/servicos#inss"
+      }
+    ],
+    "whyTitle": "Atendimento direto com a engenheira responsável",
+    "whyText": "O contato é feito diretamente com a engenheira responsável pelo projeto, desde o primeiro levantamento até a vistoria final. Isso evita desencontro de informações entre quem projeta e quem executa.",
+    "whyBullets": [
+      "Atendimento presencial em Governador Valadares e municípios do Leste Mineiro.",
+      "Anotação de Responsabilidade Técnica (ART) emitida junto ao CREA-MG em todos os serviços.",
+      "Acompanhamento do processo no sistema Infoscip até a aprovação do Corpo de Bombeiros."
+    ],
+    "whyImageSlot": "/img/atendimento.webp",
+    "proofTitle": "Trabalhos e registros técnicos",
+    "proofIntro": "Registros reais de projetos técnicos, vistorias diagnósticas e soluções implantadas na região.",
+    "faqTitle": "Perguntas frequentes",
+    "ctaTitle": "Evite multas e interdições na sua edificação",
+    "ctaText": "Agende uma visita técnica preliminar para avaliar a situação da edificação e saber quais adequações são necessárias perante a legislação vigente."
+  }
+}
