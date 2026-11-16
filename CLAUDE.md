@@ -96,3 +96,16 @@
 
 \- \[ ] Nenhuma biblioteca pesada ou desnecessária no bundle do frontend público.
 
+
+
+
+## Codebase Overview
+
+Site institucional estático (gerado no build a partir do CMS) + painel React com CRM Kanban + API PHP/MySQL. Edição no painel grava no MySQL; o site só muda após `deploy/build-release.mjs` e re-upload.
+
+**Stack**: site Vite MPA + vanilla JS + SCSS com SSG próprio (`site/build/`); admin React 18 + TS + Quill; backend PHP 8.2 + MySQL (sessões, `jti` e rate limit no MySQL, sem Redis); deploy em hospedagem compartilhada.
+**Structure**: `site/`, `admin/`, `backend/` (`shared/forms.json` é a fonte única dos questionários), `deploy/`.
+
+Atenção: as seções 2, 4 e 5 acima citam Redis e cores antigas; a implementação real está no mapa.
+
+For detailed architecture, see [docs/CODEBASE_MAP.md](docs/CODEBASE_MAP.md).
