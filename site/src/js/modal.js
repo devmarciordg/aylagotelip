@@ -39,7 +39,7 @@ function initProjectModal() {
 
     if (categoryEl) categoryEl.textContent = project.category || 'Projeto Técnico';
     if (titleEl) titleEl.textContent = project.title || '';
-    if (metaEl) metaEl.textContent = project.meta || '';
+    if (metaEl) metaEl.textContent = [project.meta, project.client && `Cliente: ${project.client}`].filter(Boolean).join(' · ');
     if (descEl) descEl.textContent = project.description || '';
 
     if (mediaEl) {

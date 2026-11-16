@@ -6,7 +6,7 @@
   },
   "blocks": {
     "title": "A engenheira responsável",
-    "lead": "Escritório de engenharia civil voltado para projetos de prevenção contra incêndio, regularização de imóveis e obtenção de alvarás em Governador Valadares e cidades vizinhas.",
+    "lead": "Escritório de engenharia civil voltado para projetos de prevenção contra incêndio, regularização de imóveis e obtenção de alvarás em Minas Gerais.",
     "portraitSlot": "/img/ayla-pose.webp",
     "bioTitle": "Ayla Gotelip",
     "bio": [
@@ -74,12 +74,12 @@
         {
           "logo": "/img/brasao-bombeiros.webp",
           "name": "Corpo de Bombeiros Militar de Minas Gerais (CBMMG)",
-          "desc": "Cadastro técnico regularizado no Infoscip para elaboração e tramitação de PPCI, realização de vistorias e emissão de AVCB e CLCB."
+          "desc": "Empresa cadastrada no CBMMG para projetos, instalação, comercialização e manutenção de equipamentos de prevenção contra incêndio."
         },
         {
           "logo": "/img/crea-mg.webp",
           "name": "Conselho Regional de Engenharia e Agronomia (CREA-MG)",
-          "desc": "Profissional habilitada com emissão obrigatória de Anotação de Responsabilidade Técnica (ART) para projetos, laudos e acompanhamento de obras."
+          "desc": "Engenheira registrada, com emissão de ART para projetos, laudos e obras."
         }
       ]
     },

@@ -17,6 +17,7 @@ import {
   STAR,
   TAG,
   TRASH,
+  USER,
 } from './icons';
 
 /**
@@ -238,6 +239,7 @@ function Cartao({ p }: { p: Record<string, string> }) {
           {p.category && <span className="pj-card__cat">{p.category}</span>}
           <strong>{p.title || 'Título do projeto'}</strong>
           <span className="pj-card__meta">{p.meta}</span>
+          {p.client && <span className="pj-card__meta">Cliente: {p.client}</span>}
         </span>
       </div>
     </div>
@@ -332,6 +334,15 @@ export function Projeto({ value, onChange }: { value: Json; onChange: (v: Json) 
           onChange={(v) => set('meta', v)}
           hint="Onde foi e o que resolveu, em letra pequena sob o título."
           placeholder="Governador Valadares, MG · Dimensionamento e aprovação no CBMMG"
+        />
+
+        <Campo
+          icon={USER}
+          label="Cliente (opcional)"
+          value={p.client ?? ''}
+          onChange={(v) => set('client', v)}
+          hint="Vazio, o nome não aparece no site. Para indicar sem expor, escreva “Cliente sob sigilo”."
+          placeholder="Supermercado Exemplo ou Cliente sob sigilo"
         />
 
         {'featured' in o && (
