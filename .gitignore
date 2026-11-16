@@ -182,3 +182,7 @@ skills-lock.json
 .codex/
 .gemini/
 **/.impeccable/
+
+# Prints e perfil do Chrome dos checks de layout
+shots/
+.taste-skill/

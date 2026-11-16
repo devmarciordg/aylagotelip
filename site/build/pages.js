@@ -90,6 +90,34 @@ function heroBg(h) {
   </picture>`;
 }
 
+/**
+ * Registros profissionais (CBMMG, CREA-MG): mora no Sobre e se repete na home,
+ * onde a prova de habilitação pesa mais na decisão de contato.
+ */
+function registros(acc, alt = true) {
+  if (!acc?.items?.length) return '';
+  return `<section class="section${alt ? ' section--alt' : ''}" id="registros">
+  <div class="wrap text-center">
+    <h2 class="section__title section__title--center">${esc(acc.title)}</h2>
+    <p class="section__intro section__intro--center">${esc(acc.intro)}</p>
+    <div class="orgs-grid">
+      ${acc.items
+        .map(
+          (item) => `
+      <div class="org-card">
+        <img src="${esc(item.logo)}" alt="${esc(item.name)}" class="org-card__logo" loading="lazy" />
+        <div class="org-card__info">
+          <strong>${esc(item.name)}</strong>
+          <span>${esc(item.desc)}</span>
+        </div>
+      </div>`,
+        )
+        .join('')}
+    </div>
+  </div>
+</section>`;
+}
+
 /** @param {object} [deps] blocos de outras páginas: `projetos`, `servicos` e `sobre`. */
 export function home(b, deps = {}) {
   const h = b.hero;
@@ -120,7 +148,7 @@ export function home(b, deps = {}) {
           </div>
           <div class="hero-profile__info">
             <strong>Ayla Gotelip</strong>
-            <span>Engenheira Responsável · CREA-MG</span>
+            <span>Engenheira Responsável · ${esc(b.contact?.crea || 'CREA-MG')}</span>
           </div>
           <span class="hero-profile__tag">ART Registrada</span>
         </div>
@@ -193,7 +221,7 @@ ${
         <div class="card__body">
           <div class="card__top">
             ${media ? '' : `<span class="card__icon">${icon(s.icon)}</span>`}
-            <span class="card__badge">Norma CBMMG</span>
+            <span class="card__badge">${s.slug === 'inss' ? 'Receita Federal' : 'Norma CBMMG'}</span>
           </div>
           <h3 class="card__title">${esc(s.title)}</h3>
           <p class="card__text">${esc(s.text)}</p>
@@ -236,6 +264,8 @@ ${
     </div>
   </div>
 </section>
+
+${registros(deps.sobre?.accreditations, false)}
 
 ${destaques(b, deps.projetos ?? {})}
 
@@ -335,30 +365,7 @@ ${
   </div>
 </section>
 
-${
-  b.accreditations
-    ? `<section class="section section--alt">
-  <div class="wrap text-center">
-    <h2 class="section__title section__title--center">${esc(b.accreditations.title)}</h2>
-    <p class="section__intro section__intro--center">${esc(b.accreditations.intro)}</p>
-    <div class="orgs-grid">
-      ${b.accreditations.items
-        .map(
-          (item) => `
-      <div class="org-card">
-        <img src="${esc(item.logo)}" alt="${esc(item.name)}" class="org-card__logo" loading="lazy" />
-        <div class="org-card__info">
-          <strong>${esc(item.name)}</strong>
-          <span>${esc(item.desc)}</span>
-        </div>
-      </div>`,
-        )
-        .join('')}
-    </div>
-  </div>
-</section>`
-    : ''
-}
+${registros(b.accreditations)}
 
 ${faqSection(b.faqTitle, b.faq)}
 
@@ -583,6 +590,7 @@ ${pageHead(b.title, b.lead, 'Portfólio de projetos')}
             ${s.category ? `<span class="gallery__category">${esc(s.category)}</span>` : ''}
             <h2 class="gallery__title">${esc(s.title)}</h2>
             <p class="gallery__meta">${esc(s.meta)}</p>
+            ${s.client ? `<p class="gallery__meta">Cliente: ${esc(s.client)}</p>` : ''}
             <span class="gallery__cta-hint">
               <span>Mais informações</span>
               ${arrow(14)}

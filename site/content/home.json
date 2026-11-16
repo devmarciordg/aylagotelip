@@ -27,23 +27,23 @@
     "stats": [
       {
         "icon": "stamp",
-        "value": "ART",
-        "label": "responsabilidade técnica registrada no CREA em cada serviço"
+        "value": "CREA-MG 214049/D",
+        "label": "engenheira registrada, com ART emitida em cada serviço"
+      },
+      {
+        "icon": "shield",
+        "value": "Cadastro no CBMMG",
+        "label": "projetos, instalação, comercialização e manutenção de equipamentos"
+      },
+      {
+        "icon": "building",
+        "value": "Empresa formalizada",
+        "label": "Ayla Gotelip Engenharia Ltda · CNPJ 59.763.852/0001-83"
       },
       {
         "icon": "pin",
-        "value": "GV e região",
-        "label": "atendimento presencial no Leste de Minas Gerais"
-      },
-      {
-        "icon": "clock",
-        "value": "Hora marcada",
-        "label": "visitas técnicas com agendamento prévio"
-      },
-      {
-        "icon": "clipboard",
-        "value": "Completo",
-        "label": "projetos, laudos periciais, brigada e regularização"
+        "value": "Leste de Minas",
+        "label": "atendimento presencial, com visita técnica agendada"
       }
     ],
     "journeyTitle": "Como atuamos na sua empresa",
