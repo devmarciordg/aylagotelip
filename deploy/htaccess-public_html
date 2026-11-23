@@ -47,6 +47,11 @@ Options -Indexes
 # Cada pagina e um diretorio com index.html. Sem isto, /servicos/ devolve 403.
 DirectoryIndex index.html
 
+# URLs do site antigo (ainda no Google e em favoritos) -> paginas novas
+RewriteRule ^(aboutus|pages/aboutus\.html)/?$ /sobre/ [L,R=301]
+RewriteRule ^(services|pages/services\.html)/?$ /servicos/ [L,R=301]
+RewriteRule ^pages/home\.html$ / [L,R=301]
+
 # /pagina -> /pagina/ (mantem o link canonico e evita conteudo duplicado)
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_URI} !/$
